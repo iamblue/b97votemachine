@@ -152,13 +152,13 @@ module.exports = function (grunt) {
           //   'bar/moo'    //  to `paths`, or a plugin you added under `use`
           // ]
         },
-        files: {
-          'app/styles/*.css': ['app/stylus/*.styl']
-          // '<%= yeoman.app %>/styles/*.css': '<%= yeoman.app %>/stylus/*.styl' // 1:1 compile
-          //'path/to/another.css': ['path/to/sources/*.styl', 'path/to/more/*.styl'] // compile and concat into single file
-        }
-        
-
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/stylus',
+          src: '{,*/}*.styl',
+          dest: '<%= yeoman.app %>/styles',
+          ext: '.css'
+        }]
       }
     },
     // not used since Uglify task does concat,

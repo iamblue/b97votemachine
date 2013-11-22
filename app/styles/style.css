@@ -1,0 +1,231 @@
+::selection{background:#add8e6}
+.wrapper .header{border-bottom:7px solid #000;background:#fff;}
+.wrapper .header .wrap .nav.left li{border-left:1px solid #d6d6d6;text-align:center;}
+.wrapper .header .wrap .nav.left li:first-child{border-left:none}
+.wrapper .header .wrap .nav.left li a{color:#000;font-weight:bold}
+.wrapper .header .wrap .nav.left .logo{background:url("../img/logo.png") no-repeat center left;text-indent:-9999px;background-size:90%}
+.wrapper .header .wrap .nav.left .choose{border-bottom:5px solid #a670d2;}
+.wrapper .header .wrap .nav.left .choose:hover{border-bottom:5px solid #ddb3ff}
+.wrapper .header .wrap .nav.left .preorder{border-bottom:5px solid #97d319;}
+.wrapper .header .wrap .nav.left .preorder:hover{border-bottom:5px solid #ceff66}
+.wrapper .header .wrap .nav.left .gobuy{border-bottom:5px solid #0a7fe0;}
+.wrapper .header .wrap .nav.left .gobuy:hover{border-bottom:5px solid #86c4f7}
+.wrapper .header .wrap .nav.left .work{background:url("../img/light1.png") no-repeat 13px center;}
+.wrapper .header .wrap .nav.left .work:hover{background:url("../img/light2.png") no-repeat 13px center}
+.wrapper .header .wrap .nav.right li{border-right:1px solid #d6d6d6;}
+.wrapper .header .wrap .nav.right li:first-child{border-left:1px solid #d6d6d6}
+.wrapper .header .wrap .nav.right li a{color:#73d7ff;font-weight:bold;}
+.wrapper .header .wrap .nav.right li a:hover{color:#73c9ec}
+.wrapper .header .wrap .nav.right .cart{background:url("../img/cart.png") no-repeat 13px center;}
+.wrapper .header .wrap .nav.right .cart:hover{background:url("../img/cart2.png") no-repeat 13px center}
+.wrapper .header .wrap .nav.right .cart:before{content:"(";color:#73d7ff}
+.wrapper .header .wrap .nav.right .cart:after{content:")";color:#73d7ff}
+.wrapper .header .wrap .nav.right .user:after{content:"▼";color:#c3c3c3}
+.wrapper .slider ul a{background:transparent;border:1px solid #fff;border-radius:10px;}
+.wrapper .slider ul a:hover,.wrapper .slider ul a:active,.wrapper .slider ul a.active{background:#fff}
+.wrapper .contentBK .content.one{background:#25489d}
+.wrapper .contentBK .content.two{background:#dcf1ec}
+.wrapper .contentBK .content.three{background:#b8bde9}
+.wrapper .contentBK .content.four{background:#e3b8e9}
+.wrapper .contentBK .content.five{background:#b8e1e9}
+.wrapper .contentBK .content.six{background:#97d319}
+.wrapper .contentBK .content.seven{background:#0a7fe0}
+.footer{background:#8a8a8a;}
+.footer .wrap .logoBK a{background:url("../img/logo2.png") no-repeat left top;background-size:65%;color:#fff;font-size:12px}
+.footer .wrap .aboutUs a{color:#fff;font-size:12px}
+.footer .wrap .ad-buy{background:#fff;border-radius:10px;}
+.footer .wrap .ad-buy .info h6{color:#595757}
+.footer .wrap .ad-buy .info p{color:#000}
+.footer .wrap .ad-buy .info .buy-btn span{color:#73d7ff;font-weight:bold}
+.footer .wrap .ad-buy .info .buy-btn .btn.btnDef{font-weight:bold;font-size:18px;text-shadow:1px 1px 2px rgba(0,0,0,0.5);background:#6cd5ff;background:linear-gradient(to bottom,#9fe2fc 0%,#6cd5ff 100%);}
+.footer .wrap .ad-buy .info .buy-btn .btn.btnDef:hover{background:#73c9ec;background:linear-gradient(to bottom,#90ddf9 0%,#73c9ec 100%);}
+.contentBK .topic{background:#ededed;background:linear-gradient(to bottom,#ededed 0%,#ededed 73%,#dcdcdc 100%);}
+.contentBK .topic .wrap .product{font-weight:bold;font-size:24px;color:#000}
+.contentBK .topic .wrap .name{color:#a3a3a3;font-size:12px}
+.contentBK .topic .wrap p{color:#595757;font-size:16px}
+.contentBK .content .wrap.top .left .title{background:#97d319;font-size:13px;color:#fff;border-radius:24px}
+.contentBK .content .wrap.top .left .adSlider .btnL{border:1px solid #cacaca;border-radius:5px;background:#fff;color:#818181;}
+.contentBK .content .wrap.top .left .adSlider .btnL:hover{background:#f7f7f7}
+.contentBK .content .wrap.top .left .adSlider .btnL:after{content:"〈";font-weight:bold;font-size:14px;border:none}
+.contentBK .content .wrap.top .left .adSlider .btnR{border:1px solid #cacaca;border-radius:5px;background:#fff;}
+.contentBK .content .wrap.top .left .adSlider .btnR:hover{background:#f7f7f7}
+.contentBK .content .wrap.top .left .adSlider .btnR:after{content:"〉";font-weight:bold;font-size:14px;border:none}
+.contentBK .content .wrap.top .left .adSlider ul{border:0;}
+.contentBK .content .wrap.top .left .adSlider ul:before{background:#fff}
+.contentBK .content .wrap.top .left .adSlider ul li{border:2.5px solid #fff}
+.contentBK .content .wrap.top .right .preorder-day{border-radius:20px;border:1px solid #cecece;color:#595757;font-size:14px}
+.contentBK .content .wrap.top .right .day{font-size:26px;color:#000;background:url("../img/countdown-day.png") no-repeat center left;}
+.contentBK .content .wrap.top .right .day:before{color:#595757;font-size:14px}
+.contentBK .content .wrap.top .right .day:after{color:#595757;font-size:14px}
+.contentBK .content .wrap.top .right p+a{background:#6cd5ff;background:linear-gradient(to bottom,#9fe2fc 0%,#6cd5ff 100%);border-radius:12px;font-size:26px;font-weight:bold;text-shadow:1px 1px 2px rgba(0,0,0,0.5);}
+.contentBK .content .wrap.top .right p+a:hover{background:#73c9ec;background:linear-gradient(to bottom,#90ddf9 0%,#73c9ec 100%);}
+.contentBK .content .wrap.top .right ul li{font-size:24px;color:#595757;}
+.contentBK .content .wrap.top .right ul li:before{font-size:14px}
+.contentBK .content .wrap.top .right ul li:after{font-size:14px}
+.contentBK .content .wrap.top .right ul .pre-money{color:#000;border-right:1px solid #dbdbdb;}
+.contentBK .content .wrap.top .right ul .pre-money:before{color:#595757}
+.contentBK .content .wrap.top .right .pre-bar{background:#c6c6c6;background:linear-gradient(to bottom,#c6c6c6 0%,#909090 100%);border-radius:10px;line-height:28px;color:#fff;}
+.contentBK .content .wrap.top .right .pre-bar span{background:#97d319;border-radius:10px}
+.contentBK .content .wrap.top .right .pre-bar p{color:#fff;font-size:13px}
+.contentBK .content .wrap.top .right >h6{color:#000;font-weight:normal;border-bottom:1px solid #000}
+.contentBK .content .wrap.top .preorder-more{background:#f6f6f6;border-radius:20px;}
+.contentBK .content .wrap.top .preorder-more ul .media{border-right:0;border-bottom:1px solid #9f9f9f;}
+.contentBK .content .wrap.top .preorder-more ul .media:last-child{border-bottom:0}
+.contentBK .content .wrap.top .preorder-more ul .media:hover{background:none}
+.contentBK .content .wrap.top .preorder-more ul .media .text >h6{line-height:16px;font-size:16px;color:#009cff}
+.contentBK .content .wrap.top .preorder-more ul .media .text >h4:after{content:"TWD";font-size:14px}
+.contentBK .content .wrap.top .preorder-more ul .media .text+p{font-size:12px}
+.contentBK .content .wrap.top .preorder-more >.more{color:#97d319;border:1px solid #97d319;border-radius:10px;font-size:14px;background:#fff url("../img/preorder-more.png") no-repeat 248px center;}
+.contentBK .content .wrap.top .preorder-more >.more:hover{color:#ceff66;border:1px solid #ceff66;background:#fff url("../img/preorder-more2.png") no-repeat 248px center}
+.contentBK .content .wrap.bottom .title{background:#97d319;font-size:13px;color:#fff;border-radius:24px}
+.contentBK .content .wrap.bottom .process:before{background:#b2b2b2}
+.contentBK .content .wrap.bottom .process ul li a{background:url("../img/process.png") no-repeat center top;color:#adadad;font-size:12px;}
+.contentBK .content .wrap.bottom .process ul li a:hover{color:#adadad}
+.contentBK .content .wrap.bottom .process ul li .active{background:url("../img/process2.png") no-repeat center top;color:#595959;font-size:14px;}
+.contentBK .content .wrap.bottom .process ul li .active:hover{color:#595959}
+.contentBK .content .wrap.bottom .timeline{border-top:1px solid #595757;}
+.contentBK .content .wrap.bottom .timeline .date{font-size:12px;line-height:40px;}
+.contentBK .content .wrap.bottom .timeline .date .start:before{content:"決定價格";font-size:13px;font-weight:bold}
+.contentBK .content .wrap.bottom .timeline .date .end:before{content:"｜";font-size:13px;font-weight:bold}
+.contentBK .content .wrap.bottom .timeline .info{border-left:1px solid #595757;}
+.contentBK .content .wrap.bottom .timeline .info .textBK p{color:#595757;font-size:15px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average span{background:#a670d2;color:#fff;font-weight:bold;font-size:35px;border-radius:15px;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average span:after{content:"TWD";font-size:20px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description{border-top:1px solid #000;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description .hzl dl{line-height:18px;font-size:13px;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description .hzl dl dt:after{content:"/"}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar{background:#c6c6c6;background:linear-gradient(to bottom,#c6c6c6 0%,#909090 100%);border-radius:10px;line-height:28px;color:#fff;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar p{color:#fff;font-size:13px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar .target:before{content:"目標票數"}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar span{background:#a670d2;border-radius:10px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .day{font-size:26px;color:#000;background:url("../img/countdown-day.png") no-repeat center left;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .day:before{content:"剩下";color:#595757;font-size:14px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .day:after{content:"天";color:#595757;font-size:14px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .sum{font-size:26px;color:#000;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .sum:before{content:"得票數";color:#595757;font-size:14px}
+.contentBK .content .wrap.backto-top a{background:url("../img/backto-top.png") no-repeat top right;color:#97d319;font-size:13px;font-weight:bold}
+.wrapper{min-height:100%;padding-bottom:210px;position:relative;}
+.wrapper .header{width:100%;height:60px;position:fixed;z-index:100;text-align:center;}
+.wrapper .header .wrap{display:inline-block;max-width:1200px;}
+.wrapper .header .wrap .nav.left li{float:left;height:60px;line-height:60px;padding:0 18px;display:block;}
+.wrapper .header .wrap .nav.left li a{display:block}
+.wrapper .header .wrap .nav.left .logo{margin:0;padding:0;width:176px}
+.wrapper .header .wrap .nav.left .choose,.wrapper .header .wrap .nav.left .preorder,.wrapper .header .wrap .nav.left .gobuy{height:55px}
+.wrapper .header .wrap .nav.left .work{padding-left:42px}
+.wrapper .header .wrap .nav.right li{float:left;height:60px;line-height:60px;padding:0 13px}
+.wrapper .header .wrap .nav.right .cart{padding-left:37px;position:relative}
+.wrapper .slider{width:12px;height:700px;position:fixed;top:67px;left:214px;}
+.wrapper .slider ul{display:block;position:absolute;width:12px;top:50%;margin-top:-52.2px;}
+.wrapper .slider ul a{width:10px;height:10px;display:block}
+.contentBK.index{width:100%;height:auto;padding-top:67px;}
+.contentBK.index .content{width:100%;height:633px;}
+.contentBK.index .content .wrap{padding:67px 0 0 0}
+.contentBK.index .content.one .wrap .left{margin:150px 0 0 100px}
+.contentBK.index .content.two .wrap .left{margin:150px 0 0 120px;text-align:center}
+.footer{height:210px;width:100%;margin-top:-210px;position:relative;}
+.footer .wrap{width:970px;padding:24px 0 0 0;}
+.footer .wrap .logoBK{width:227px;float:left;margin-right:20px;}
+.footer .wrap .logoBK a{width:209px;height:12px;padding-top:32px;display:block}
+.footer .wrap .aboutUs{width:380px;float:left;}
+.footer .wrap .aboutUs ul{float:left;padding-right:25px}
+.footer .wrap .ad-buy{float:right;width:318px;height:96px;padding:12px;}
+.footer .wrap .ad-buy .pic{width:135px;height:96px;overflow:hidden;}
+.footer .wrap .ad-buy .pic img{width:135px}
+.footer .wrap .ad-buy .info{width:175px;float:right;}
+.footer .wrap .ad-buy .info h6{padding:0;font-size:17px;height:20px;overflow:hidden}
+.footer .wrap .ad-buy .info p{line-height:16px;margin:5px 0 0 0}
+.footer .wrap .ad-buy .info .buy-btn span{display:block;float:left;height:30px;line-height:30px;}
+.footer .wrap .ad-buy .info .buy-btn span:before{content:"NT. "}
+.footer .wrap .ad-buy .info .buy-btn a{display:block;float:right;margin:0;width:62px}
+.contentBK{width:100%;height:auto;padding-top:67px;}
+.contentBK .topic{min-height:65px;width:100%;display:block;padding-top:55px;}
+.contentBK .topic .wrap{width:970px;margin:0 auto;}
+.contentBK .topic .wrap .product{display:inline-block;padding-right:5px}
+.contentBK .topic .wrap .name{display:inline-block;width:840px;}
+.contentBK .topic .wrap .name:before{content:"發起人/ "}
+.contentBK .topic .wrap p{width:710px;display:block;float:left;margin-bottom:10px}
+.contentBK .topic .wrap .pd-info{display:block;float:right;margin-bottom:10px;}
+.contentBK .topic .wrap .pd-info li{float:right;padding-right:10px;}
+.contentBK .topic .wrap .pd-info li:first-child{padding-right:0}
+.contentBK .content .wrap.top{width:970px;padding:35px 0 0 0;}
+.contentBK .content .wrap.top >.left{width:630px;padding:0;overflow:hidden;}
+.contentBK .content .wrap.top >.left .title{display:inline-block;padding:4px 14px;margin-bottom:15px;margin-top:45px;}
+.contentBK .content .wrap.top >.left .title:first-child{margin-top:0}
+.contentBK .content .wrap.top >.left >img{width:630px}
+.contentBK .content .wrap.top >.left .adSlider{width:630px;height:78px;}
+.contentBK .content .wrap.top >.left .adSlider .btnL{height:68px;width:17px;margin:5px 5px 5px 0;}
+.contentBK .content .wrap.top >.left .adSlider .btnL:after{width:14px;height:16px;margin-top:0;margin-left:0;left:0}
+.contentBK .content .wrap.top >.left .adSlider .btnR{height:68px;width:17px;margin:5px 0 5px 5px;}
+.contentBK .content .wrap.top >.left .adSlider .btnR:after{width:14px;height:16px;margin-top:0;margin-right:0;right:0}
+.contentBK .content .wrap.top >.left .adSlider ul{height:73px;margin:2.5px 0;position:relative;}
+.contentBK .content .wrap.top >.left .adSlider ul:before{content:"";position:absolute;width:20px;height:80px;left:588px}
+.contentBK .content .wrap.top >.left .adSlider ul li{height:68px;padding:0}
+.contentBK .content .wrap.top >.right{width:310px;}
+.contentBK .content .wrap.top >.right .preorder-day{box-sizing:border-box;padding:13px;margin-bottom:15px;}
+.contentBK .content .wrap.top >.right .preorder-day .countdown{float:left;display:block;height:16px;margin-top:12px;margin-bottom:12px}
+.contentBK .content .wrap.top >.right .preorder-day .day{float:right;padding-left:30px;}
+.contentBK .content .wrap.top >.right .preorder-day .day:before{content:"剩下"}
+.contentBK .content .wrap.top >.right .preorder-day .day:after{content:"天"}
+.contentBK .content .wrap.top >.right .preorder-day ul{border-top:1px solid #dbdbdb;clear:both;padding-top:13px;}
+.contentBK .content .wrap.top >.right .preorder-day ul li{float:left;position:relative;padding-top:25px;}
+.contentBK .content .wrap.top >.right .preorder-day ul li:before{position:absolute;top:0}
+.contentBK .content .wrap.top >.right .preorder-day ul li:after{content:"TWD";position:absolute;top:20px}
+.contentBK .content .wrap.top >.right .preorder-day ul .pre-money{width:140px;margin-right:10px;}
+.contentBK .content .wrap.top >.right .preorder-day ul .pre-money:before{content:"目前累積預購金額"}
+.contentBK .content .wrap.top >.right .preorder-day ul .money{width:130px;}
+.contentBK .content .wrap.top >.right .preorder-day ul .money:before{content:"目標預購金額"}
+.contentBK .content .wrap.top >.right .preorder-day .pre-bar{height:28px;position:relative;margin-bottom:15px;overflow:hidden;}
+.contentBK .content .wrap.top >.right .preorder-day .pre-bar span{position:absolute;top:0;height:28px;width:86%;display:block}
+.contentBK .content .wrap.top >.right .preorder-day .pre-bar p{padding-left:20px;line-height:28px;margin:0;position:absolute;z-index:2}
+.contentBK .content .wrap.top >.right .preorder-day >h6{width:160px;padding:0;margin-bottom:5px}
+.contentBK .content .wrap.top >.right .preorder-day p{margin-bottom:15px}
+.contentBK .content .wrap.top >.right .preorder-day p+a{display:block;margin:0;height:44px;line-height:44px}
+.contentBK .content .wrap.top >.right .preorder-more{box-sizing:border-box;padding:17px;}
+.contentBK .content .wrap.top >.right .preorder-more ul{margin-bottom:0;}
+.contentBK .content .wrap.top >.right .preorder-more ul .media{padding-top:20px;padding-bottom:20px;margin-bottom:0;}
+.contentBK .content .wrap.top >.right .preorder-more ul .media:first-child{padding-top:10px}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .pic{width:100px;height:92px;overflow:hidden;text-align:center;margin-left:0;margin-right:10px;}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .pic img{height:92px;width:auto}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .text{width:166px;}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .text >h6{padding-top:0}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .text >h4:after{position:absolute;margin-top:-5px}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .text+p{clear:both;padding-top:10px}
+.contentBK .content .wrap.top >.right .preorder-more >.more{height:29px;line-height:29px;display:block;padding:0 10px}
+.contentBK .content .wrap.bottom{width:970px;padding:35px 0 0 0;}
+.contentBK .content .wrap.bottom .title{display:inline-block;padding:4px 14px;margin-bottom:15px;margin-top:45px;}
+.contentBK .content .wrap.bottom .title:first-child{margin-top:0}
+.contentBK .content .wrap.bottom .process{height:100px;width:100%;position:relative;text-align:center;}
+.contentBK .content .wrap.bottom .process:before{content:"";width:100%;height:1px;position:absolute;top:25%;z-index:-1}
+.contentBK .content .wrap.bottom .process ul{margin:0 auto;display:inline-block;}
+.contentBK .content .wrap.bottom .process ul li{float:left;height:52px;margin-top:8px;}
+.contentBK .content .wrap.bottom .process ul li a{display:block;padding-top:34px;width:148px}
+.contentBK .content .wrap.bottom .timeline{width:100%;padding-top:12px;margin-bottom:12px;}
+.contentBK .content .wrap.bottom .timeline .date{width:120px;padding-top:35px;padding-bottom:35px;float:left;text-align:center;}
+.contentBK .content .wrap.bottom .timeline .date .start:before{display:block;text-align:center}
+.contentBK .content .wrap.bottom .timeline .date .end:before{display:block;text-align:center}
+.contentBK .content .wrap.bottom .timeline .info{padding:26px 0 35px 30px;float:left;width:819px;}
+.contentBK .content .wrap.bottom .timeline .info .textBK{margin-bottom:5px;}
+.contentBK .content .wrap.bottom .timeline .info .textBK:last-child{margin-bottom:0}
+.contentBK .content .wrap.bottom .timeline .info .textBK >.text{float:left;width:460px;padding-right:30px;}
+.contentBK .content .wrap.bottom .timeline .info .textBK >.text >h5{padding-top:0}
+.contentBK .content .wrap.bottom .timeline .info .textBK >.pic{width:320px;float:right;}
+.contentBK .content .wrap.bottom .timeline .info .textBK >.pic img{width:320px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average{padding:0 20px;width:280px;float:right;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average p{text-align:center;font-size:14px;margin-bottom:10px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average span{display:block;text-align:center;padding:10px 30px 10px 10px;position:relative;width:170px;margin:0 auto 15px auto;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average span:after{position:absolute}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description{margin:0;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description .hzl{width:100%;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description .hzl dl dt{width:80px;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description .hzl dl dt:after{padding-left:5px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description .hzl dl dd{width:200px;margin-left:0}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote{padding:0 20px;width:280px;float:right;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar{height:28px;position:relative;margin-bottom:15px;overflow:hidden;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar >p{padding-left:20px;line-height:28px;margin:0;position:absolute;z-index:2}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar .target{padding:0 20px 0 0;right:0;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar .target:before{padding-right:3px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar >span{position:absolute;top:0;height:28px;width:128%;display:block}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .day{float:left;padding-left:30px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .sum{float:right}
+.contentBK .content .wrap.backto-top{width:970px;padding:0;}
+.contentBK .content .wrap.backto-top a{height:28px;float:right;padding-right:30px;line-height:28px}
