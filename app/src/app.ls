@@ -5,7 +5,7 @@ angular.module 'limitstyleLayoutApp', [
   'ngSanitize'
   'ui.router'
 ]
-.config ($stateProvider, $urlRouterProvider) ->
+.config ($stateProvider, $urlRouterProvider) !->
   $urlRouterProvider.otherwise '/state1'
   $stateProvider
     .state 'state1', {
@@ -15,7 +15,7 @@ angular.module 'limitstyleLayoutApp', [
     .state 'state2', {
       url: '/'
       templateUrl: 'scroll.html'
-      controller: ($scope) ->
+      controller: ($scope) !->
         $scope.things = [
           'A'
           'Set'
@@ -26,7 +26,7 @@ angular.module 'limitstyleLayoutApp', [
     .state 'state3', {
       url: '/'
       templateUrl: 'scroll.html'
-      controller: ($scope) ->
+      controller: ($scope) !->
         $scope.things = [
           'A'
           'Set'
