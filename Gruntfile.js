@@ -26,6 +26,12 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.ls'],
         tasks: ['livescript:test']
       },
+      stylus: {
+        files: [
+          '<%= yeoman.app %>/stylus/{,*/}*.styl'
+        ],
+        tasks: ['stylus']
+      },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['copy:styles', 'autoprefixer']
@@ -129,6 +135,30 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.app %>/spec',
           ext: '.js'
         }]
+      }
+    },
+    stylus: {
+      compile: {
+        options: {
+          compress: true,
+          paths: ['node_modules/grunt-contrib-stylus/node_modules']
+          // paths: ['<%= yeoman.app %>/stylus'],
+          // urlfunc: 'embedurl', // use embedurl('test.png') in our code to trigger Data URI embedding
+          // use: [
+            //require('fluidity') // use stylus plugin at compile time
+          // ],
+          // import: [      //  @import 'foo', 'bar/moo', etc. into every .styl file
+          //   'foo',       //  that is compiled. These might be findable based on values you gave
+          //   'bar/moo'    //  to `paths`, or a plugin you added under `use`
+          // ]
+        },
+        files: {
+          'app/styles/*.css': ['app/stylus/*.styl']
+          // '<%= yeoman.app %>/styles/*.css': '<%= yeoman.app %>/stylus/*.styl' // 1:1 compile
+          //'path/to/another.css': ['path/to/sources/*.styl', 'path/to/more/*.styl'] // compile and concat into single file
+        }
+        
+
       }
     },
     // not used since Uglify task does concat,
@@ -308,6 +338,8 @@ module.exports = function (grunt) {
       'watch'
     ]);
   });
+
+  grunt.registerTask('compass', ['stylus']);
 
   grunt.registerTask('test', [
     'clean:server',

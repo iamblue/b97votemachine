@@ -1,0 +1,125 @@
+.wrapper{min-height:100%;padding-bottom:210px;position:relative;}
+.wrapper .header{width:100%;height:60px;position:fixed;z-index:100;text-align:center;}
+.wrapper .header .wrap{display:inline-block;max-width:1200px;}
+.wrapper .header .wrap .nav.left li{float:left;height:60px;line-height:60px;padding:0 18px;display:block;}
+.wrapper .header .wrap .nav.left li a{display:block}
+.wrapper .header .wrap .nav.left .logo{margin:0;padding:0;width:176px}
+.wrapper .header .wrap .nav.left .choose,.wrapper .header .wrap .nav.left .preorder,.wrapper .header .wrap .nav.left .gobuy{height:55px}
+.wrapper .header .wrap .nav.left .work{padding-left:42px}
+.wrapper .header .wrap .nav.right li{float:left;height:60px;line-height:60px;padding:0 13px}
+.wrapper .header .wrap .nav.right .cart{padding-left:37px;position:relative}
+.wrapper .slider{width:12px;height:700px;position:fixed;top:67px;left:214px;}
+.wrapper .slider ul{display:block;position:absolute;width:12px;top:50%;margin-top:-52.2px;}
+.wrapper .slider ul a{width:10px;height:10px;display:block}
+.contentBK.index{width:100%;height:auto;padding-top:67px;}
+.contentBK.index .content{width:100%;height:633px;}
+.contentBK.index .content .wrap{padding:67px 0 0 0}
+.contentBK.index .content.one .wrap .left{margin:150px 0 0 100px}
+.contentBK.index .content.two .wrap .left{margin:150px 0 0 120px;text-align:center}
+.footer{height:210px;width:100%;margin-top:-210px;position:relative;}
+.footer .wrap{width:970px;padding:24px 0 0 0;}
+.footer .wrap .logoBK{width:227px;float:left;margin-right:20px;}
+.footer .wrap .logoBK a{width:209px;height:12px;padding-top:32px;display:block}
+.footer .wrap .aboutUs{width:380px;float:left;}
+.footer .wrap .aboutUs ul{float:left;padding-right:25px}
+.footer .wrap .ad-buy{float:right;width:318px;height:96px;padding:12px;}
+.footer .wrap .ad-buy .pic{width:135px;height:96px;overflow:hidden;}
+.footer .wrap .ad-buy .pic img{width:135px}
+.footer .wrap .ad-buy .info{width:175px;float:right;}
+.footer .wrap .ad-buy .info h6{padding:0;font-size:17px;height:20px;overflow:hidden}
+.footer .wrap .ad-buy .info p{line-height:16px;margin:5px 0 0 0}
+.footer .wrap .ad-buy .info .buy-btn span{display:block;float:left;height:30px;line-height:30px;}
+.footer .wrap .ad-buy .info .buy-btn span:before{content:"NT. "}
+.footer .wrap .ad-buy .info .buy-btn a{display:block;float:right;margin:0;width:62px}
+.contentBK{width:100%;height:auto;padding-top:67px;}
+.contentBK .topic{min-height:65px;width:100%;display:block;padding-top:55px;}
+.contentBK .topic .wrap{width:970px;margin:0 auto;}
+.contentBK .topic .wrap .product{display:inline-block;padding-right:5px}
+.contentBK .topic .wrap .name{display:inline-block;width:840px;}
+.contentBK .topic .wrap .name:before{content:"發起人/ "}
+.contentBK .topic .wrap p{width:710px;display:block;float:left;margin-bottom:10px}
+.contentBK .topic .wrap .pd-info{display:block;float:right;margin-bottom:10px;}
+.contentBK .topic .wrap .pd-info li{float:right;padding-right:10px;}
+.contentBK .topic .wrap .pd-info li:first-child{padding-right:0}
+.contentBK .content .wrap.top{width:970px;padding:35px 0 0 0;}
+.contentBK .content .wrap.top >.left{width:630px;padding:0;overflow:hidden;}
+.contentBK .content .wrap.top >.left .title{display:inline-block;padding:4px 14px;margin-bottom:15px;margin-top:45px;}
+.contentBK .content .wrap.top >.left .title:first-child{margin-top:0}
+.contentBK .content .wrap.top >.left >img{width:630px}
+.contentBK .content .wrap.top >.left .adSlider{width:630px;height:78px;}
+.contentBK .content .wrap.top >.left .adSlider .btnL{height:68px;width:17px;margin:5px 5px 5px 0;}
+.contentBK .content .wrap.top >.left .adSlider .btnL:after{width:14px;height:16px;margin-top:0;margin-left:0;left:0}
+.contentBK .content .wrap.top >.left .adSlider .btnR{height:68px;width:17px;margin:5px 0 5px 5px;}
+.contentBK .content .wrap.top >.left .adSlider .btnR:after{width:14px;height:16px;margin-top:0;margin-right:0;right:0}
+.contentBK .content .wrap.top >.left .adSlider ul{height:73px;margin:2.5px 0;position:relative;}
+.contentBK .content .wrap.top >.left .adSlider ul:before{content:"";position:absolute;width:20px;height:80px;left:588px}
+.contentBK .content .wrap.top >.left .adSlider ul li{height:68px;padding:0}
+.contentBK .content .wrap.top >.right{width:310px;}
+.contentBK .content .wrap.top >.right .preorder-day{box-sizing:border-box;padding:13px;margin-bottom:15px;}
+.contentBK .content .wrap.top >.right .preorder-day .countdown{float:left;display:block;height:16px;margin-top:12px;margin-bottom:12px}
+.contentBK .content .wrap.top >.right .preorder-day .day{float:right;padding-left:30px;}
+.contentBK .content .wrap.top >.right .preorder-day .day:before{content:"剩下"}
+.contentBK .content .wrap.top >.right .preorder-day .day:after{content:"天"}
+.contentBK .content .wrap.top >.right .preorder-day ul{border-top:1px solid #dbdbdb;clear:both;padding-top:13px;}
+.contentBK .content .wrap.top >.right .preorder-day ul li{float:left;position:relative;padding-top:25px;}
+.contentBK .content .wrap.top >.right .preorder-day ul li:before{position:absolute;top:0}
+.contentBK .content .wrap.top >.right .preorder-day ul li:after{content:"TWD";position:absolute;top:20px}
+.contentBK .content .wrap.top >.right .preorder-day ul .pre-money{width:140px;margin-right:10px;}
+.contentBK .content .wrap.top >.right .preorder-day ul .pre-money:before{content:"目前累積預購金額"}
+.contentBK .content .wrap.top >.right .preorder-day ul .money{width:130px;}
+.contentBK .content .wrap.top >.right .preorder-day ul .money:before{content:"目標預購金額"}
+.contentBK .content .wrap.top >.right .preorder-day .pre-bar{height:28px;position:relative;margin-bottom:15px;overflow:hidden;}
+.contentBK .content .wrap.top >.right .preorder-day .pre-bar span{position:absolute;top:0;height:28px;width:86%;display:block}
+.contentBK .content .wrap.top >.right .preorder-day .pre-bar p{padding-left:20px;line-height:28px;margin:0;position:absolute;z-index:2}
+.contentBK .content .wrap.top >.right .preorder-day >h6{width:160px;padding:0;margin-bottom:5px}
+.contentBK .content .wrap.top >.right .preorder-day p{margin-bottom:15px}
+.contentBK .content .wrap.top >.right .preorder-day p+a{display:block;margin:0;height:44px;line-height:44px}
+.contentBK .content .wrap.top >.right .preorder-more{box-sizing:border-box;padding:17px;}
+.contentBK .content .wrap.top >.right .preorder-more ul{margin-bottom:0;}
+.contentBK .content .wrap.top >.right .preorder-more ul .media{padding-top:20px;padding-bottom:20px;margin-bottom:0;}
+.contentBK .content .wrap.top >.right .preorder-more ul .media:first-child{padding-top:10px}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .pic{width:100px;height:92px;overflow:hidden;text-align:center;margin-left:0;margin-right:10px;}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .pic img{height:92px;width:auto}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .text{width:166px;}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .text >h6{padding-top:0}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .text >h4:after{position:absolute;margin-top:-5px}
+.contentBK .content .wrap.top >.right .preorder-more ul .media .text+p{clear:both;padding-top:10px}
+.contentBK .content .wrap.top >.right .preorder-more >.more{height:29px;line-height:29px;display:block;padding:0 10px}
+.contentBK .content .wrap.bottom{width:970px;padding:35px 0 0 0;}
+.contentBK .content .wrap.bottom .title{display:inline-block;padding:4px 14px;margin-bottom:15px;margin-top:45px;}
+.contentBK .content .wrap.bottom .title:first-child{margin-top:0}
+.contentBK .content .wrap.bottom .process{height:100px;width:100%;position:relative;text-align:center;}
+.contentBK .content .wrap.bottom .process:before{content:"";width:100%;height:1px;position:absolute;top:25%;z-index:-1}
+.contentBK .content .wrap.bottom .process ul{margin:0 auto;display:inline-block;}
+.contentBK .content .wrap.bottom .process ul li{float:left;height:52px;margin-top:8px;}
+.contentBK .content .wrap.bottom .process ul li a{display:block;padding-top:34px;width:148px}
+.contentBK .content .wrap.bottom .timeline{width:100%;padding-top:12px;margin-bottom:12px;}
+.contentBK .content .wrap.bottom .timeline .date{width:120px;padding-top:35px;padding-bottom:35px;float:left;text-align:center;}
+.contentBK .content .wrap.bottom .timeline .date .start:before{display:block;text-align:center}
+.contentBK .content .wrap.bottom .timeline .date .end:before{display:block;text-align:center}
+.contentBK .content .wrap.bottom .timeline .info{padding:26px 0 35px 30px;float:left;width:819px;}
+.contentBK .content .wrap.bottom .timeline .info .textBK{margin-bottom:5px;}
+.contentBK .content .wrap.bottom .timeline .info .textBK:last-child{margin-bottom:0}
+.contentBK .content .wrap.bottom .timeline .info .textBK >.text{float:left;width:460px;padding-right:30px;}
+.contentBK .content .wrap.bottom .timeline .info .textBK >.text >h5{padding-top:0}
+.contentBK .content .wrap.bottom .timeline .info .textBK >.pic{width:320px;float:right;}
+.contentBK .content .wrap.bottom .timeline .info .textBK >.pic img{width:320px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average{padding:0 20px;width:280px;float:right;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average p{text-align:center;font-size:14px;margin-bottom:10px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average span{display:block;text-align:center;padding:10px 30px 10px 10px;position:relative;width:170px;margin:0 auto 15px auto;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average span:after{position:absolute}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description{margin:0;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description .hzl{width:100%;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description .hzl dl dt{width:80px;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description .hzl dl dt:after{padding-left:5px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .average .description .hzl dl dd{width:200px;margin-left:0}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote{padding:0 20px;width:280px;float:right;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar{height:28px;position:relative;margin-bottom:15px;overflow:hidden;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar >p{padding-left:20px;line-height:28px;margin:0;position:absolute;z-index:2}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar .target{padding:0 20px 0 0;right:0;}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar .target:before{padding-right:3px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .vote-bar >span{position:absolute;top:0;height:28px;width:128%;display:block}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .day{float:left;padding-left:30px}
+.contentBK .content .wrap.bottom .timeline .info .textBK .get-vote .sum{float:right}
+.contentBK .content .wrap.backto-top{width:970px;padding:0;}
+.contentBK .content .wrap.backto-top a{height:28px;float:right;padding-right:30px;line-height:28px}
