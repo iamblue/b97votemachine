@@ -18,13 +18,13 @@ module.exports = function (grunt) {
       dist: 'dist'
     },
     watch: {
-      coffee: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
-        tasks: ['coffee:dist']
+      livescript: {
+        files: ['<%= yeoman.app %>/src/{,*/}*.ls'],
+        tasks: ['livescript:dist']
       },
-      coffeeTest: {
-        files: ['test/spec/{,*/}*.coffee'],
-        tasks: ['coffee:test']
+      livescriptTest: {
+        files: ['test/spec/{,*/}*.ls'],
+        tasks: ['livescript:test']
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
@@ -107,7 +107,7 @@ module.exports = function (grunt) {
         '<%= yeoman.app %>/scripts/{,*/}*.js'
       ]
     },
-    coffee: {
+    livescript: {
       options: {
         sourceMap: true,
         sourceRoot: ''
@@ -115,9 +115,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= yeoman.app %>/scripts',
-          src: '{,*/}*.coffee',
-          dest: '.tmp/scripts',
+          cwd: '<%= yeoman.app %>/src',
+          src: '{,*/}*.ls',
+          dest: '<%= yeoman.app %>/scripts',
           ext: '.js'
         }]
       },
@@ -125,8 +125,8 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: 'test/spec',
-          src: '{,*/}*.coffee',
-          dest: '.tmp/spec',
+          src: '{,*/}*.ls',
+          dest: '<%= yeoman.app %>/spec',
           ext: '.js'
         }]
       }
@@ -248,15 +248,15 @@ module.exports = function (grunt) {
     },
     concurrent: {
       server: [
-        'coffee:dist',
+        'livescript:dist',
         'copy:styles'
       ],
       test: [
-        'coffee',
+        'livescript',
         'copy:styles'
       ],
       dist: [
-        'coffee',
+        'livescript',
         'copy:styles',
         'imagemin',
         'svgmin',
