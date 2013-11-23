@@ -363,3 +363,44 @@ button[class*="btn"] {border: 0;}
 .btn-gradient.green:active  {background: #72B08E;}
 
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+.subscription *{
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+.subscription{
+  border: 5px solid #eee;
+  display: inline-block;
+}
+.subscription input{
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+.subscription input[type="text"]{
+  font-size: 28px;
+  padding: 8px 12px 15px 8px;
+  border:none;
+  color:#909090;
+}
+.subscription input[type="submit"]{
+  background-color: #FFB83A;
+  color: rgb(78,78,78);
+  text-shadow: 1px 1px 3px #fff;
+  font-weight: bold;
+  box-shadow: inset 0 1px 1px rgba(255,255,0,.6); 
+  background-image: linear-gradient(rgba(255,207,92,.7), rgba(223,156,38,.8));
+  font-size:20px;
+  padding: 15px 20px;
+  border: none;
+  -webkit-transition: all 0.3s ease-in;
+     -moz-transition: all 0.3s ease-in;
+       -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+}
+.subscription input[type="submit"]:hover{
+  background-color: #F5FF00;
+  -webkit-transition: all 0.3s ease-in;
+     -moz-transition: all 0.3s ease-in;
+       -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+}

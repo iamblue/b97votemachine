@@ -82,6 +82,5 @@ page.section 1, (section) !->
   section.on 'progress', (progress) !->
     # console.log progress
 
-
 window.onload = !->
   page.init()
