@@ -2,22 +2,19 @@
   'use strict';
   var page;
   angular.module('BadDriverApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router']).config(function($stateProvider, $urlRouterProvider){
+    var fbAppId;
+    fbAppId = '1422387521330282';
+    FB.init({
+      appId: fbAppId,
+      status: true,
+      cookie: true,
+      xfbml: true
+    });
     $urlRouterProvider.otherwise('/index');
     $stateProvider.state('index', {
       url: '/index',
-      templateUrl: '/views/layout/index.html'
-    }).state('state2', {
-      url: '/',
-      templateUrl: 'scroll.html',
-      controller: function($scope){
-        $scope.things = ['A', 'Set', 'Of', 'Things'];
-      }
-    }).state('state3', {
-      url: '/',
-      templateUrl: 'scroll.html',
-      controller: function($scope){
-        $scope.things = ['A', 'Set', 'Of', 'Things'];
-      }
+      templateUrl: '/views/layout/index.html',
+      controller: 'indexCtrl'
     });
   });
   page = sections.create();

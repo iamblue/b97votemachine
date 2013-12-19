@@ -6,33 +6,19 @@ angular.module 'BadDriverApp', [
   'ui.router'
 ]
 .config ($stateProvider, $urlRouterProvider) !->
+  fbAppId = '1422387521330282'
+  FB.init(
+    appId      : fbAppId
+    status     : true    
+    cookie     : true   
+    xfbml      : true     
+  )
   $urlRouterProvider.otherwise '/index'
   $stateProvider
     .state 'index', {
       url: '/index'
       templateUrl: '/views/layout/index.html'
-    }
-    .state 'state2', {
-      url: '/'
-      templateUrl: 'scroll.html'
-      controller: ($scope) !->
-        $scope.things = [
-          'A'
-          'Set'
-          'Of'
-          'Things'
-        ]
-    }
-    .state 'state3', {
-      url: '/'
-      templateUrl: 'scroll.html'
-      controller: ($scope) !->
-        $scope.things = [
-          'A'
-          'Set'
-          'Of'
-          'Things'
-        ]
+      controller: 'indexCtrl'
     }
 page = sections.create()
 page.section 1, (section) !->
@@ -84,3 +70,6 @@ page.section 1, (section) !->
 
 window.onload = !->
   page.init()
+
+# window.onload = !->
+  

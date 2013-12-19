@@ -1,6 +1,3 @@
 (function(){
-  'use strict';
-  angular.module('BadDriverApp').controller('MainCtrl', function($scope){
-    $scope.awesomeThings = ['HTML5 Boilerplate', 'AngularJS', 'Karma'];
-  });
+  angular.module('BadDriverApp').controller('indexCtrl', ['$scope'].concat(function($scope){}));
 }).call(this);
