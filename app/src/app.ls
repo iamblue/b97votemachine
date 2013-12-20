@@ -4,6 +4,7 @@ angular.module 'BadDriverApp', [
   'ngResource'
   'ngSanitize'
   'ui.router'
+  'ngStorage'
 ]
 .config ($stateProvider, $urlRouterProvider) !->
   fbAppId = '1422387521330282'
@@ -20,56 +21,38 @@ angular.module 'BadDriverApp', [
       templateUrl: '/views/layout/index.html'
       controller: 'indexCtrl'
     }
-page = sections.create()
-page.section 1, (section) !->
-  target = document.querySelector('#section-2-opacity')
-  bg-pattern = document.querySelector('.bg-pattern')
-  # logo = document.querySelector('#logo')
-  # content = document.querySelector('#')
-  # section.transitions [
-  #   key: 'opacity'
-  #   start: 0 #螢幕最下0 #物件頂點道螢幕最上100 #物件底部超過點到螢幕最上200 
-  #   end: 100
-  #   from: 0  #
-  #   to: 1
-  #   format: '%s' #'%spx'
-  #   target: target
-  #   prefix: true
-  #   handler: (from, come, progress) ->
-  #     from
-  #     console.log come
-  #     console.log progress
-  # ]
-  section.transitions [
-    key: 'margin-left'
-    start: 0 #螢幕最下0 #物件頂點道螢幕最上100 #物件底部超過點到螢幕最上200 
-    end: 100
-    from: 0  #
-    to: 200
-    format: '%spx' #'%spx'
-    target: target
-    prefix: true
-    # handler: (from, come, progress) ->
-    #   console.log from
-    #   console.log come
-    #   console.log progress
-    #   ((from - come)/progress)
-  ]
-  section.transitions [ 
-    key: 'opacity'
-    start: 0 
-    end: 100
-    from: 1
-    to: 0
-    format: '%s'
-    target: bg-pattern
-    prefix:true
-  ]
-  section.on 'progress', (progress) !->
-    # console.log progress
+    .state 'update', {
+      url: '/update'
+      templateUrl: '/views/layout/update.html'
+      controller: 'updateCtrl'
+    }
 
-window.onload = !->
-  page.init()
-
-# window.onload = !->
-  
+.run <[$rootScope $location $localStorage $http]> ++ ($rootScope,$location,$localStorage,$http) !->
+  $rootScope.$watch( ->
+    if $location.path() != '/login'
+      sessionStorage.lasturl = $location.path()
+    $location.path()
+  (a) !-> console.log ('url has changed: ' + a)
+  )
+  FB.getLoginStatus((response) !->
+    # console.log(response)
+    if (response.status == 'connected') 
+      uid = response.authResponse.userID
+      accessToken = response.authResponse.accessToken
+      # console.log($localStorage.name)
+      const dataId ={
+        id:uid
+        tk:accessToken
+      } 
+      $http.post('http://127.0.0.1:3000/member/update',dataId)
+      $rootScope.$apply(->
+        $rootScope.tk = accessToken
+        $rootScope.fbid = response.authResponse.userID
+        $rootScope.name = $localStorage.name
+      )
+    else
+      $rootScope.$apply(->
+        $rootScope.fbid = undefined
+        $rootScope.name = '請登入'
+      )
+  )

@@ -1,7 +1,6 @@
 (function(){
   'use strict';
-  var page;
-  angular.module('BadDriverApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router']).config(function($stateProvider, $urlRouterProvider){
+  angular.module('BadDriverApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router', 'ngStorage']).config(function($stateProvider, $urlRouterProvider){
     var fbAppId;
     fbAppId = '1422387521330282';
     FB.init({
@@ -15,36 +14,41 @@
       url: '/index',
       templateUrl: '/views/layout/index.html',
       controller: 'indexCtrl'
+    }).state('update', {
+      url: '/update',
+      templateUrl: '/views/layout/update.html',
+      controller: 'updateCtrl'
     });
-  });
-  page = sections.create();
-  page.section(1, function(section){
-    var target, bgPattern;
-    target = document.querySelector('#section-2-opacity');
-    bgPattern = document.querySelector('.bg-pattern');
-    section.transitions([{
-      key: 'margin-left',
-      start: 0,
-      end: 100,
-      from: 0,
-      to: 200,
-      format: '%spx',
-      target: target,
-      prefix: true
-    }]);
-    section.transitions([{
-      key: 'opacity',
-      start: 0,
-      end: 100,
-      from: 1,
-      to: 0,
-      format: '%s',
-      target: bgPattern,
-      prefix: true
-    }]);
-    section.on('progress', function(progress){});
-  });
-  window.onload = function(){
-    page.init();
-  };
+  }).run(['$rootScope', '$location', '$localStorage', '$http'].concat(function($rootScope, $location, $localStorage, $http){
+    $rootScope.$watch(function(){
+      if ($location.path() !== '/login') {
+        sessionStorage.lasturl = $location.path();
+      }
+      return $location.path();
+    }, function(a){
+      console.log('url has changed: ' + a);
+    });
+    FB.getLoginStatus(function(response){
+      var uid, accessToken, dataId;
+      if (response.status === 'connected') {
+        uid = response.authResponse.userID;
+        accessToken = response.authResponse.accessToken;
+        dataId = {
+          id: uid,
+          tk: accessToken
+        };
+        $http.post('http://127.0.0.1:3000/member/update', dataId);
+        $rootScope.$apply(function(){
+          $rootScope.tk = accessToken;
+          $rootScope.fbid = response.authResponse.userID;
+          return $rootScope.name = $localStorage.name;
+        });
+      } else {
+        $rootScope.$apply(function(){
+          $rootScope.fbid = undefined;
+          return $rootScope.name = '請登入';
+        });
+      }
+    });
+  }));
 }).call(this);
