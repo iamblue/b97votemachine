@@ -363,44 +363,76 @@ button[class*="btn"] {border: 0;}
 .btn-gradient.green:active  {background: #72B08E;}
 
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
-.subscription *{
-  margin: 0;
-  padding: 0;
-  outline: 0;
+input[type="text"] {
+  font-size:   .5em;
+  font-weight: lighter;
+  color: #4d4a4d;
+  padding: .4em .5em; 
 }
-.subscription{
-  border: 5px solid #eee;
+
+.inline-field.shadow {
+  box-shadow: 0 0 1em #ccc;
+  transition: box-shadow .2s linear; }
+
+.inline-field {
+  font-size: 2em;
+  font-weight: lighter;
   display: inline-block;
-}
-.subscription input{
-  font-family: 'Open Sans Condensed', sans-serif;
-}
-.subscription input[type="text"]{
-  font-size: 28px;
-  padding: 8px 12px 15px 8px;
-  border:none;
-  color:#909090;
-}
-.subscription input[type="submit"]{
-  background-color: #FFB83A;
-  color: rgb(78,78,78);
-  text-shadow: 1px 1px 3px #fff;
-  font-weight: bold;
-  box-shadow: inset 0 1px 1px rgba(255,255,0,.6); 
-  background-image: linear-gradient(rgba(255,207,92,.7), rgba(223,156,38,.8));
-  font-size:20px;
-  padding: 15px 20px;
-  border: none;
-  -webkit-transition: all 0.3s ease-in;
-     -moz-transition: all 0.3s ease-in;
-       -o-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in;
-}
-.subscription input[type="submit"]:hover{
-  background-color: #F5FF00;
-  -webkit-transition: all 0.3s ease-in;
-     -moz-transition: all 0.3s ease-in;
-       -o-transition: all 0.3s ease-in;
-          transition: all 0.3s ease-in;
-}
+  padding: .2em; 
+  margin-top: 10px;
+  margin-left:30px;
+  border: 1px solid #ccc; 
+  background: #ffffff;
+  transition: box-shadow .2s linear; }
+
+  .inline-field input[type="text"] {
+    width: 300px;
+    padding-left: 0;
+    border: none; }
+
+  .inline-field input[type="text"]:focus {
+    outline: none; }
+
+.inline-field,
+.button {
+  border-radius: .4em; }
+
+/** ====================================================================
+    !Buttons
+    ================================================================= */
+.button,
+.button:hover {
+  border-top:   none; /* fix for input button/submit element */
+  border-left:  none; /* fix for input button/submit element */
+  border-right: none; /* fix for input button/submit element */
+  transition:   background          .3s linear, 
+                border-bottom-color .3s linear; }
+
+.button {
+  color:               #efefef;
+  padding: .5em .5em;
+  font-size: .6em;
+  border-bottom-width: .2em;
+  border-bottom-style: solid; }
+
+.button:hover {
+  color: #fff; }
+
+.button:active {
+  transform:           translate(0, .18em);
+  border-bottom-width: .1em;
+  margin-bottom:       .1em; }
+
+.button:focus {
+  outline: none; }
+
+/** Gray Button */
+.gray-button {
+  text-shadow:         0 .1em 1px #252525;
+  background:          #333233;
+  border-bottom-color: #252525;
+  box-shadow:          0 0 0 .04em #171617; }
+
+.gray-button:hover {
+  background:          #484748;
+  border-bottom-color: #333233; }

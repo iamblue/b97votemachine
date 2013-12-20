@@ -6,7 +6,7 @@ button{margin:0}
 body{-webkit-text-size-adjust:none;color:#000;-webkit-font-smoothing:antialiased;background-color:#f9fdfe;position:relative}
 h1{font-family:'Poiret One',cursive;color:#fff;font-size:45px}
 h2{color:#ccc;font-size:20px}
-#logotitle{text-align:center}
+#logotitle{text-align:center;margin-top:150px}
 #subtitle{text-align:center;margin-top:-1em}
 #section1{background:url("../img/bg.jpg");}
 #section1 .content{width:500px;height:500px;margin:0 auto;margin-left:-270px;left:50%;top:50%;margin-top:-550px;padding:20px;line-height:28px;-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;color:#8c5c05;font-family:'微軟正黑體';z-index:999;position:absolute}
