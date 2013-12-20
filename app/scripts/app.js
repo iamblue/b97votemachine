@@ -12,12 +12,17 @@
     $urlRouterProvider.otherwise('/index');
     $stateProvider.state('index', {
       url: '/index',
+      resolve: {},
       templateUrl: '/views/layout/index.html',
       controller: 'indexCtrl'
     }).state('update', {
       url: '/update',
       templateUrl: '/views/layout/update.html',
       controller: 'updateCtrl'
+    }).state('info', {
+      url: '/info/:id',
+      templateUrl: '/views/layout/info.html',
+      controller: 'infoCtrl'
     });
   }).run(['$rootScope', '$location', '$localStorage', '$http'].concat(function($rootScope, $location, $localStorage, $http){
     $rootScope.cCode = [];

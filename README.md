@@ -11,6 +11,7 @@ https://g0v.hackpad.com/BadDriver-sDcFsbD58zo
 
 ##架構
 __Backend__: nodejs(sails.js)+mongodb
+
 __f2e__: angular.js(Yeoman)
 
 ##Any Question? Fixe Bugs?

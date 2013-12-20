@@ -23,9 +23,7 @@ const cheatcodeDirective = ->
 				scope.$apply(->
 					scope.cCode.length = 0
 				)
-			event.preventDefault()
 		)
-
 angular.module 'BadDriverApp'
 	.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http]> ++ ($scope,$location,$rootScope,$localStorage,$http) !->
 		page.init()
@@ -53,7 +51,6 @@ angular.module 'BadDriverApp'
 									$rootScope.first_name = response.first_name
 									$rootScope.last_name = response.last_name
 								)
-
 								$location.path('/')
 								const data = {
 									fb_name:response.name

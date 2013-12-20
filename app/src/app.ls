@@ -18,6 +18,9 @@ angular.module 'BadDriverApp', [
   $stateProvider
     .state 'index', {
       url: '/index'
+      resolve: {
+        
+      }
       templateUrl: '/views/layout/index.html'
       controller: 'indexCtrl'
     }
@@ -26,7 +29,11 @@ angular.module 'BadDriverApp', [
       templateUrl: '/views/layout/update.html'
       controller: 'updateCtrl'
     }
-
+    .state 'info', {
+      url: '/info/:id'
+      templateUrl: '/views/layout/info.html'
+      controller: 'infoCtrl'
+    }
 .run <[$rootScope $location $localStorage $http]> ++ ($rootScope,$location,$localStorage,$http) !->
   $rootScope.cCode = []
   $rootScope.$watch( ->

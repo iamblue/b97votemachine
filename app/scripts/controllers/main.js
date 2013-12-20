@@ -10,27 +10,25 @@
         elem.bind('keypress', function(e){
           switch (e.which) {
           case 98:
-            scope.$apply(function(){
+            return scope.$apply(function(){
               return scope.cCode.push(98);
             });
-            break;
           case 97:
             scope.$apply(function(){
               return scope.cCode.push(97);
             });
             if (scope.cCode.length === 2 && scope.cCode[0] === 98) {
               console.log('hihi');
-              alert('boombbbbbb');
+              return alert('boombbbbbb');
             } else {
-              scope.cCode.length = 0;
+              return scope.cCode.length = 0;
             }
             break;
           default:
-            scope.$apply(function(){
+            return scope.$apply(function(){
               return scope.cCode.length = 0;
             });
           }
-          return event.preventDefault();
         });
       }
     };
