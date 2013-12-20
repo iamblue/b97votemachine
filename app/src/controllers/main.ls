@@ -1,11 +1,39 @@
+const cheatcodeDirective = ->
+	restrict: 'A'
+	link: !(scope,elem,attr) ->
+		console.log scope
+		console.log \123
+		console.log(elem)
+		elem.bind('keypress',(e)->
+			switch(e.which)
+			case 98 then 
+				scope.$apply(->
+					scope.cCode.push(98)
+				)			
+			case 97 then
+				scope.$apply(->
+					scope.cCode.push(97)
+				)
+				if scope.cCode.length == 2 && scope.cCode[0] == 98
+					console.log \hihi 
+					alert('boombbbbbb')
+				else
+					scope.cCode.length = 0
+			default 	 	
+				scope.$apply(->
+					scope.cCode.length = 0
+				)
+			event.preventDefault()
+		)
+
 angular.module 'BadDriverApp'
 	.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http]> ++ ($scope,$location,$rootScope,$localStorage,$http) !->
 		page.init()
 		$http.defaults.useXDomain = true
+		$scope.cCode = []
 		$scope.update = ->
 			console.log \123
 			if ($rootScope.fbid)
-				alert \123
 				$location.path('/update')
 			else
 				FB.login((res) ->
@@ -16,16 +44,8 @@ angular.module 'BadDriverApp'
 								console.log(response)
 								fb_uid = response.id
 								fb_name = response.name
-								fb_first_name = response.first_name
-								fb_last_name = response.last_name
-								fb_link = response.link
-								fb_username = response.name
-								fb_work = response.work
-								fb_inspirational_people = response.inspirational_people
-								fb_gender = response.gender
 								fb_email = response.email
-								fb_verify = response.verified
-	              
+								
 								$rootScope.$apply( !->
 									$localStorage.name = response.name
 									$rootScope.name = response.name
@@ -60,7 +80,7 @@ angular.module 'BadDriverApp'
 				fbid:$rootScope.fbid
 			}
 			$http.post('http://127.0.0.1:3000/data/add',data)
-
+	.directive 'cheatCode' cheatcodeDirective
 
 page = sections.create()
 page.section 1, (section) !->

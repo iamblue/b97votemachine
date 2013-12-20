@@ -80,9 +80,9 @@ h2
   width: 100%
   height: 100%
   display: block
-  position: fixed
+  position: absolute
   background: url(../img/pattern.png) repeat
-  z-index: 9
+  pointer-events:none
 
 
 
@@ -150,8 +150,27 @@ body
 
 #header
   z-index:999
-  position:absolute;
+  position:absolute
   top:0
   left:0
   width:100%
   height:80px
+
+.section-2-content
+  width:960px
+  // background:red
+  height:auto
+  margin:0 auto
+  .grid
+    box-sizing: border-box;  
+    display: inline-block
+    margin-left: -0.32em
+    letter-spacing: normal
+    margin-right: 20px
+    width:280px
+    padding:30px
+    height:350px
+    background:#e0e0e0
+    .info
+      border:blue 1px solid
+

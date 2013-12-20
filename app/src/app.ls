@@ -28,6 +28,7 @@ angular.module 'BadDriverApp', [
     }
 
 .run <[$rootScope $location $localStorage $http]> ++ ($rootScope,$location,$localStorage,$http) !->
+  $rootScope.cCode = []
   $rootScope.$watch( ->
     if $location.path() != '/login'
       sessionStorage.lasturl = $location.path()

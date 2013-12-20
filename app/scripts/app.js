@@ -20,6 +20,7 @@
       controller: 'updateCtrl'
     });
   }).run(['$rootScope', '$location', '$localStorage', '$http'].concat(function($rootScope, $location, $localStorage, $http){
+    $rootScope.cCode = [];
     $rootScope.$watch(function(){
       if ($location.path() !== '/login') {
         sessionStorage.lasturl = $location.path();

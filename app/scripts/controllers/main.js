@@ -1,31 +1,58 @@
 (function(){
-  var page;
+  var cheatcodeDirective, page;
+  cheatcodeDirective = function(){
+    return {
+      restrict: 'A',
+      link: function(scope, elem, attr){
+        console.log(scope);
+        console.log('123');
+        console.log(elem);
+        elem.bind('keypress', function(e){
+          switch (e.which) {
+          case 98:
+            scope.$apply(function(){
+              return scope.cCode.push(98);
+            });
+            break;
+          case 97:
+            scope.$apply(function(){
+              return scope.cCode.push(97);
+            });
+            if (scope.cCode.length === 2 && scope.cCode[0] === 98) {
+              console.log('hihi');
+              alert('boombbbbbb');
+            } else {
+              scope.cCode.length = 0;
+            }
+            break;
+          default:
+            scope.$apply(function(){
+              return scope.cCode.length = 0;
+            });
+          }
+          return event.preventDefault();
+        });
+      }
+    };
+  };
   angular.module('BadDriverApp').controller('indexCtrl', ['$scope', '$location', '$rootScope', '$localStorage', '$http'].concat(function($scope, $location, $rootScope, $localStorage, $http){
     page.init();
     $http.defaults.useXDomain = true;
+    $scope.cCode = [];
     $scope.update = function(){
       console.log('123');
       if ($rootScope.fbid) {
-        alert('123');
         return $location.path('/update');
       } else {
         return FB.login(function(res){
           console.log(res);
           if (res.authResponse) {
             FB.api('/me', function(response){
-              var fb_uid, fb_name, fb_first_name, fb_last_name, fb_link, fb_username, fb_work, fb_inspirational_people, fb_gender, fb_email, fb_verify, data;
+              var fb_uid, fb_name, fb_email, data;
               console.log(response);
               fb_uid = response.id;
               fb_name = response.name;
-              fb_first_name = response.first_name;
-              fb_last_name = response.last_name;
-              fb_link = response.link;
-              fb_username = response.name;
-              fb_work = response.work;
-              fb_inspirational_people = response.inspirational_people;
-              fb_gender = response.gender;
               fb_email = response.email;
-              fb_verify = response.verified;
               $rootScope.$apply(function(){
                 $localStorage.name = response.name;
                 $rootScope.name = response.name;
@@ -65,7 +92,7 @@
       };
       return $http.post('http://127.0.0.1:3000/data/add', data);
     };
-  }));
+  })).directive('cheatCode', cheatcodeDirective);
   page = sections.create();
   page.section(1, function(section){
     var target, bgPattern;
