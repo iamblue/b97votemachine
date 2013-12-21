@@ -1,0 +1,176 @@
+@import 'nib'
+
+border-radius()
+  -webkit-border-radius arguments
+  -moz-border-radius arguments
+  border-radius arguments
+
+body 
+	padding:0
+	margin:0
+
+form 
+  margin:0 0 20px
+
+img 
+  border: none
+button 
+  margin: 0
+
+.signup
+  margin-top:40px
+
+body 
+  -webkit-text-size-adjust: none
+  color: #000
+  -webkit-font-smoothing:antialiased
+  background-color: #f9fdfe
+  position: relative
+
+
+h1
+  font-family: 'Poiret One', cursive
+  color:#fff
+  font-size:45px
+
+h2 
+  color:#ccc
+  font-size:20px
+
+#logotitle
+  text-align:center
+  margin-top:150px
+#subtitle
+  text-align:center
+  margin-top:-1em
+
+
+
+#section1
+  // min-height:1020px
+  background: url(../img/bg.jpg)
+
+  .content
+    width: 500px
+    height: 500px
+    margin: 0 auto
+    margin-left: -270px
+    left: 50%
+    top: 50%
+    margin-top: -550px
+    padding: 20px
+    line-height: 28px
+    border-radius: 15px
+    color: #8c5c05
+    font-family: '微軟正黑體'
+    z-index: 999
+    position: absolute
+
+#section2
+  background:#000
+
+  .content 
+    width:960px
+    margin:auto
+    background:#fff
+    height:auto
+    // height:700px
+
+.bg-pattern
+  width: 100%
+  height: 100%
+  display: block
+  position: absolute
+  background: url(../img/pattern.png) repeat
+  pointer-events:none
+
+
+
+#footer
+  position:fixed
+  bottom:0px
+  width:100%
+  height:50px
+  background:#000
+
+  p 
+    color:#ddd
+    text-align:center
+
+
+// @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed)
+size= 45px
+mask_height= 20px
+
+.middle
+  position: absolute
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+  // margin: auto
+
+.text
+  @extend .middle
+  color: #eee
+  font-size: size
+  height: (size / 2)
+  // width: 600px
+  // text-align: center
+  // text-transform: uppercase
+  letter-spacing: 3px
+  -webkit-animation: noise 1.2s linear infinite
+  .mask
+    @extend .middle
+    // height: mask_height
+    // top: -((size /2) - mask_height)
+    overflow: hidden
+    opacity: .6
+    -webkit-animation: down 2.5s ease infinite
+    span
+      @extend .middle
+      color: #fff
+      text-shadow: 2px 0 5px #40E0D0, -2px 0 5px #CD5C5C
+      -webkit-animation: up 2.5s ease infinite
+  
+@-webkit-keyframes noise
+  50%
+    text-shadow: 8px 0 5px #40E0D0, -8px 0 5px #CD5C5C
+  
+@-webkit-keyframes down
+  100%
+    top: 60px
+  
+@-webkit-keyframes up
+  100%
+    top: -55px
+  
+body
+  background: #333
+
+#header
+  z-index:999
+  position:absolute
+  top:0
+  left:0
+  width:100%
+  height:80px
+
+.section-2-content
+  width:960px
+  // background:red
+  height:auto
+  margin:0 auto
+  .grid
+    box-sizing: border-box;  
+    display: inline-block
+    margin-left: -0.32em
+    letter-spacing: normal
+    margin-right: 20px
+    width:280px
+    padding:30px
+    height:350px
+    background:#e0e0e0
+    .info
+      border:blue 1px solid
+
