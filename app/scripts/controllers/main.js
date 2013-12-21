@@ -1,5 +1,5 @@
 (function(){
-  var cheatcodeDirective, page;
+  var cheatcodeDirective;
   cheatcodeDirective = function(){
     return {
       restrict: 'A',
@@ -33,7 +33,7 @@
       }
     };
   };
-  angular.module('BadDriverApp').controller('indexCtrl', ['$scope', '$location', '$rootScope', '$localStorage', '$http'].concat(function($scope, $location, $rootScope, $localStorage, $http){
+  app.controller('indexCtrl', ['$scope', '$location', '$rootScope', '$localStorage', '$http'].concat(function($scope, $location, $rootScope, $localStorage, $http){
     page.init();
     $http.defaults.useXDomain = true;
     $scope.cCode = [];
@@ -74,7 +74,8 @@
         });
       }
     };
-  })).controller('updateCtrl', ['$scope', '$location', '$http', '$rootScope'].concat(function($scope, $location, $http, $rootScope){
+  }));
+  app.controller('updateCtrl', ['$scope', '$location', '$http', '$rootScope'].concat(function($scope, $location, $http, $rootScope){
     $http.defaults.useXDomain = true;
     $scope.send = function(){
       var data;
@@ -90,32 +91,6 @@
       };
       return $http.post('http://127.0.0.1:3000/data/add', data);
     };
-  })).directive('cheatCode', cheatcodeDirective);
-  page = sections.create();
-  page.section(1, function(section){
-    var target, bgPattern;
-    target = document.querySelector('#section-2-opacity');
-    bgPattern = document.querySelector('.bg-pattern');
-    section.transitions([{
-      key: 'margin-left',
-      start: 0,
-      end: 100,
-      from: 0,
-      to: 200,
-      format: '%spx',
-      target: target,
-      prefix: true
-    }]);
-    section.transitions([{
-      key: 'opacity',
-      start: 0,
-      end: 100,
-      from: 1,
-      to: 0,
-      format: '%s',
-      target: bgPattern,
-      prefix: true
-    }]);
-    section.on('progress', function(progress){});
-  });
+  }));
+  app.directive('cheatCode', cheatcodeDirective);
 }).call(this);

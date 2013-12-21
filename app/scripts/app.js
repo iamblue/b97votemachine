@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   var app;
-  app = angular.module('BadDriverApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router', 'ngStorage']);
+  app = window.app = angular.module('BadDriverApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router', 'ngStorage']);
   app.config(function($stateProvider, $urlRouterProvider){
     var fbAppId;
     fbAppId = '1422387521330282';

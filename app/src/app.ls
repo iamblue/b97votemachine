@@ -1,6 +1,6 @@
 'use strict'
 
-app = angular.module 'BadDriverApp', [
+app = window.app = angular.module 'BadDriverApp', [
   'ngCookies'
   'ngResource'
   'ngSanitize'
@@ -48,11 +48,9 @@ app.run <[$rootScope $location $localStorage $http]> ++ ($rootScope, $location, 
   )
 
   FB.getLoginStatus((response) !->
-    # console.log(response)
     if (response.status == 'connected')
       uid = response.authResponse.userID
       accessToken = response.authResponse.accessToken
-      # console.log($localStorage.name)
       const dataId ={
         id:uid
         tk:accessToken
