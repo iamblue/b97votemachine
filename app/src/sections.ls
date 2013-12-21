@@ -42,8 +42,11 @@ page.section 1, (section) !->
 
 page.section 2, (section) !->
   background = document.querySelector '.section--description__background'
+  message = document.querySelector '.section--description__message'
 
   section.transitions [
     {key: 'transform', start: 0, end: 100, from: -100, to: 50, format: 'translate3d(0, %spx, 0)', target: background, prefix: true}
     {key: 'opacity', start: 0, end: 100, from: 0.2, to: 0.6, format: '%s', target: background}
+
+    {key: 'transform', start: 0, end: 100, from: -100, to: 50, format: 'translate3d(0, %spx, 0)', target: message, prefix: true}
   ]
