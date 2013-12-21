@@ -1,15 +1,12 @@
 const cheatcodeDirective = ->
 	restrict: 'A'
 	link: !(scope,elem,attr) ->
-		console.log scope
-		console.log \123
-		console.log(elem)
-
 		elem.bind('keydown',(e)->
 			console.log(e.which)
 			switch(e.which)
 			case 38 then
 				scope.$apply(->
+					scope.cCode.length = 0
 					scope.cCode.push(38)
 				)
 			case 40
@@ -29,11 +26,9 @@ const cheatcodeDirective = ->
 					scope.cCode.push(66)
 				)
 			case 65 then
-				
 				scope.$apply(->
 					scope.cCode.push(65)
 				)
-				console.log(scope.cCode)
 				if scope.cCode[0] == 38 && scope.cCode[1] == 38 && scope.cCode[2] == 40 && scope.cCode[3] == 40 && scope.cCode[4] == 37 && scope.cCode[5] == 39 && scope.cCode[6] == 37 && scope.cCode[7] == 39 && scope.cCode[8] == 66 && scope.cCode[9] == 65
 					console.log \hihi
 					alert('boombbbbbb')
