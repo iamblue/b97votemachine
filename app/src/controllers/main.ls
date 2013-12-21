@@ -4,7 +4,9 @@ const cheatcodeDirective = ->
 		console.log scope
 		console.log \123
 		console.log(elem)
-		elem.bind('keypress',(e)->
+
+		elem.bind('keypress keydown',(e)->
+			console.log(e.which)
 			switch(e.which)
 			case 98 then
 				scope.$apply(->
@@ -25,8 +27,17 @@ const cheatcodeDirective = ->
 				)
 		)
 
-app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http idata]> ++ ($scope, $location, $rootScope, $localStorage, $http, idata) !->
+app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http idata $sce]> ++ ($scope, $location, $rootScope, $localStorage, $http, idata, $sce) !->
 		$scope.idata = idata.data.data
+		$scope.urldata = []
+		angular.forEach(idata.data.data,(v,i,o)->
+			$scope.urldata.push('//www.youtube.com/embed/'+v.urlid)
+		)
+		$scope.urldata[0] = $sce.trustAsResourceUrl $scope.urldata[0]
+		$scope.urldata[1] = $sce.trustAsResourceUrl $scope.urldata[1]
+		$scope.urldata[2] = $sce.trustAsResourceUrl $scope.urldata[2]
+		
+		$scope.urldata.push idata.data.data.urlid 
 		page.init()
 		$http.defaults.useXDomain = true
 

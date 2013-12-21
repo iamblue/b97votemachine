@@ -25,7 +25,7 @@
     <ul>
       <li class="grid" ng-repeat="d in idata">
         <div class="info">
-          <iframe width="220" height="155" src="//www.youtube.com/embed/{{d.urlid}}" frameborder="0" allowfullscreen></iframe>
+          <iframe width="220" height="155" src="{{urldata[$index]}}" frameborder="0" allowfullscreen></iframe>
           車牌：{{d.number}}<br/>
           所在地：{{d.city}} || {{d.location}}</br>
           <div class="desp">
