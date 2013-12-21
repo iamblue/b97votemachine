@@ -22,6 +22,11 @@ app.config ($stateProvider, $urlRouterProvider) !->
     .state 'index', {
       url: '/index'
       resolve: {
+        idata: ($http)->
+          $http(
+            method: 'GET'
+            url: 'http://api.dont-throw.com/data/all'
+          )
       }
       templateUrl: '/views/layout/index.html'
       controller: 'indexCtrl'
@@ -55,7 +60,7 @@ app.run <[$rootScope $location $localStorage $http]> ++ ($rootScope, $location, 
         id:uid
         tk:accessToken
       }
-      $http.post 'http://127.0.0.1:3000/member/update', dataId
+      $http.post 'http://api.dont-throw.com/member/update', dataId
       $rootScope.$apply( ->
         $rootScope.tk = accessToken
         $rootScope.fbid = response.authResponse.userID

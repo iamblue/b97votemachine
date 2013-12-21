@@ -23,27 +23,14 @@
   s2<span id="section-2-opacity" style="background:#fff">section 2</span>
   <div class="section-2-content">
     <ul>
-      <li class="grid">
+      <li class="grid" ng-repeat="d in idata">
         <div class="info">
-          <iframe width="220" height="155" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
-          車牌{{'PS6005'}}<br/>
-          {{'新北市'}}
-          <a class="btn red" style="width:95%">點我看詳情</a>
-        </div>
-      </li>
-      <li class="grid">
-        <div class="info">
-          <iframe width="220" height="155" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
-          車牌{{'PS6005'}}<br/>
-          {{'新北市'}}
-          <a class="btn red" style="width:95%">點我看詳情</a>
-        </div>
-      </li>
-      <li class="grid">
-        <div class="info">
-          <iframe width="220" height="155" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
-          車牌{{'PS6005'}}<br/>
-          {{'新北市'}}
+          <iframe width="220" height="155" src="//www.youtube.com/embed/{{d.urlid}}" frameborder="0" allowfullscreen></iframe>
+          車牌：{{d.number}}<br/>
+          所在地：{{d.city}} || {{d.location}}</br>
+          <div class="desp">
+            描述：{{d.description}}
+          </div>
           <a class="btn red" style="width:95%">點我看詳情</a>
         </div>
       </li>

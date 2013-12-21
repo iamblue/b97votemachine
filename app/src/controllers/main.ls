@@ -25,7 +25,8 @@ const cheatcodeDirective = ->
 				)
 		)
 
-app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http]> ++ ($scope, $location, $rootScope, $localStorage, $http) !->
+app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http idata]> ++ ($scope, $location, $rootScope, $localStorage, $http, idata) !->
+		$scope.idata = idata.data.data
 		page.init()
 		$http.defaults.useXDomain = true
 
@@ -60,7 +61,7 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http]> 
 									email:fb_email
 									thirdparty_type:'fb'
 								}
-								$http.post('http://127.0.0.1:3000/member/add',data)
+								$http.post('http://api.dont-throw.com/member/add',data)
 							scope : 'email,publish_actions'
 						)
 					false
@@ -79,6 +80,6 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope]> ++ ($scope, $
 				description: $scope.description
 				fbid:$rootScope.fbid
 			}
-			$http.post('http://127.0.0.1:3000/data/add',data)
+			$http.post('http://api.dont-throw.com/data/add',data)
 
 app.directive 'cheatCode' cheatcodeDirective
