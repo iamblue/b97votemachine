@@ -142,21 +142,12 @@ module.exports = function (grunt) {
       compile: {
         options: {
           compress: true,
-          paths: ['node_modules/grunt-contrib-stylus/node_modules']
-          // paths: ['<%= yeoman.app %>/stylus'],
-          // urlfunc: 'embedurl', // use embedurl('test.png') in our code to trigger Data URI embedding
-          // use: [
-            //require('fluidity') // use stylus plugin at compile time
-          // ],
-          // import: [      //  @import 'foo', 'bar/moo', etc. into every .styl file
-          //   'foo',       //  that is compiled. These might be findable based on values you gave
-          //   'bar/moo'    //  to `paths`, or a plugin you added under `use`
-          // ]
+          paths: ['node_modules/grunt-contrib-stylus/node_modules', '<%= yeoman.app %>/stylus']
         },
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/stylus',
-          src: '{,*/}*.styl',
+          src: 'style.styl',
           dest: '<%= yeoman.app %>/styles',
           ext: '.css'
         }]
