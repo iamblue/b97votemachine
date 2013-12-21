@@ -52,6 +52,11 @@ app.run <[$rootScope $location $localStorage $http]> ++ ($rootScope, $location, 
   (a) !-> console.log 'url has changed: ' + a
   )
 
+  $rootScope.passCheatCode = ->
+    $rootScope.$apply( ->
+      $rootScope.snumber = $rootScope.number 
+    )
+    
   FB.getLoginStatus((response) !->
     if (response.status == 'connected')
       uid = response.authResponse.userID

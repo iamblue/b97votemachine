@@ -2,11 +2,9 @@ const cheatcodeDirective = ->
 	restrict: 'A'
 	link: !(scope,elem,attr) ->
 		elem.bind('keydown',(e)->
-			console.log(e.which)
 			switch(e.which)
 			case 38 then
 				scope.$apply(->
-					scope.cCode.length = 0
 					scope.cCode.push(38)
 				)
 			case 40
@@ -30,8 +28,7 @@ const cheatcodeDirective = ->
 					scope.cCode.push(65)
 				)
 				if scope.cCode[0] == 38 && scope.cCode[1] == 38 && scope.cCode[2] == 40 && scope.cCode[3] == 40 && scope.cCode[4] == 37 && scope.cCode[5] == 39 && scope.cCode[6] == 37 && scope.cCode[7] == 39 && scope.cCode[8] == 66 && scope.cCode[9] == 65
-					console.log \hihi
-					alert('boombbbbbb')
+					scope.passCheatCode()
 				else
 					scope.cCode.length = 0
 			default
@@ -43,9 +40,18 @@ const cheatcodeDirective = ->
 app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http idata $sce]> ++ ($scope, $location, $rootScope, $localStorage, $http, idata, $sce) !->
 		$scope.idata = idata.data.data
 		$scope.urldata = []
+		$rootScope.snumber = []
+		$rootScope.number = []
 		angular.forEach(idata.data.data,(v,i,o)->
-			$scope.urldata.push('//www.youtube.com/embed/'+v.urlid)
+			$rootScope.number.push v.number
+			_tmp = v.number.split ''
+			_tmp[2] = '_'
+			_tmp[3] = '_'
+			_s = _tmp.join().replace /\,/g,''
+			$rootScope.snumber.push _s
+			$scope.urldata.push '//www.youtube.com/embed/'+v.urlid
 		)
+
 		$scope.urldata[0] = $sce.trustAsResourceUrl $scope.urldata[0]
 		$scope.urldata[1] = $sce.trustAsResourceUrl $scope.urldata[1]
 		$scope.urldata[2] = $sce.trustAsResourceUrl $scope.urldata[2]
