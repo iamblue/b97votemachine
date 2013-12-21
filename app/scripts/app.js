@@ -1,6 +1,8 @@
 (function(){
   'use strict';
-  angular.module('BadDriverApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router', 'ngStorage']).config(function($stateProvider, $urlRouterProvider){
+  var app;
+  app = angular.module('BadDriverApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router', 'ngStorage']);
+  app.config(function($stateProvider, $urlRouterProvider){
     var fbAppId;
     fbAppId = '1422387521330282';
     FB.init({
@@ -24,7 +26,8 @@
       templateUrl: '/views/layout/info.html',
       controller: 'infoCtrl'
     });
-  }).run(['$rootScope', '$location', '$localStorage', '$http'].concat(function($rootScope, $location, $localStorage, $http){
+  });
+  app.run(['$rootScope', '$location', '$localStorage', '$http'].concat(function($rootScope, $location, $localStorage, $http){
     $rootScope.cCode = [];
     $rootScope.$watch(function(){
       if ($location.path() !== '/login') {
