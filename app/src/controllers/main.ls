@@ -5,18 +5,36 @@ const cheatcodeDirective = ->
 		console.log \123
 		console.log(elem)
 
-		elem.bind('keypress keydown',(e)->
+		elem.bind('keydown',(e)->
 			console.log(e.which)
 			switch(e.which)
-			case 98 then
+			case 38 then
 				scope.$apply(->
-					scope.cCode.push(98)
+					scope.cCode.push(38)
 				)
-			case 97 then
+			case 40
 				scope.$apply(->
-					scope.cCode.push(97)
+					scope.cCode.push(40)
 				)
-				if scope.cCode.length == 2 && scope.cCode[0] == 98
+			case 37
+				scope.$apply(->
+					scope.cCode.push(37)
+				)
+			case 39
+				scope.$apply(->
+					scope.cCode.push(39)
+				)
+			case 66 then
+				scope.$apply(->
+					scope.cCode.push(66)
+				)
+			case 65 then
+				
+				scope.$apply(->
+					scope.cCode.push(65)
+				)
+				console.log(scope.cCode)
+				if scope.cCode[0] == 38 && scope.cCode[1] == 38 && scope.cCode[2] == 40 && scope.cCode[3] == 40 && scope.cCode[4] == 37 && scope.cCode[5] == 39 && scope.cCode[6] == 37 && scope.cCode[7] == 39 && scope.cCode[8] == 66 && scope.cCode[9] == 65
 					console.log \hihi
 					alert('boombbbbbb')
 				else
@@ -36,7 +54,7 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
 		$scope.urldata[0] = $sce.trustAsResourceUrl $scope.urldata[0]
 		$scope.urldata[1] = $sce.trustAsResourceUrl $scope.urldata[1]
 		$scope.urldata[2] = $sce.trustAsResourceUrl $scope.urldata[2]
-		
+
 		$scope.urldata.push idata.data.data.urlid 
 		page.init()
 		$http.defaults.useXDomain = true
