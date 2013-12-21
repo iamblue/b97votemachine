@@ -38,6 +38,7 @@ const cheatcodeDirective = ->
 		)
 
 app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http idata $sce]> ++ ($scope, $location, $rootScope, $localStorage, $http, idata, $sce) !->
+		$scope.scale = ['section--video-list__item--left','section--video-list__item--middle','section--video-list__item--right']
 		$scope.idata = idata.data.data
 		$scope.urldata = []
 		$rootScope.snumber = []

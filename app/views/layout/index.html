@@ -11,22 +11,20 @@
     </form>
   </div>
 </section>
-
 <section class="section section--video-list">
   <div class="section--video-list__content">
     <ul class="section--video-list__list">
-      <li class="section--video-list__item section--video-list__item--left" ng-repeat="d in idata">
+      <li class="section--video-list__item " ng-class="{'section--video-list__item': true, 'section--video-list__item--left': $index === 0, 'section--video-list__item--middle': $index === 1, 'section--video-list__item--right': $index === 2}" ng-repeat="d in idata">
         <div class="section--video-list__item__info">
           <iframe width="100%" height="200" src="{{urldata[$index]}}" frameborder="0" allowfullscreen></iframe>
           車牌{{snumber[$index]}}<br/>
-          {{d.city}} || {{d.location}}
+          {{d.city}},{{d.location}}
           <a class="btn red" style="width:95%">點我看詳情</a>
         </div>
       </li>
     </ul>
   </div>
 </section>
-
 <section class="section section--description">
   <div class="section--description__background"></div>
 </section>
