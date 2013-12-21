@@ -10,16 +10,15 @@ angular.module 'BadDriverApp', [
   fbAppId = '1422387521330282'
   FB.init(
     appId      : fbAppId
-    status     : true    
-    cookie     : true   
-    xfbml      : true     
+    status     : true
+    cookie     : true
+    xfbml      : true
   )
   $urlRouterProvider.otherwise '/index'
   $stateProvider
     .state 'index', {
       url: '/index'
       resolve: {
-        
       }
       templateUrl: '/views/layout/index.html'
       controller: 'indexCtrl'
@@ -44,14 +43,14 @@ angular.module 'BadDriverApp', [
   )
   FB.getLoginStatus((response) !->
     # console.log(response)
-    if (response.status == 'connected') 
+    if (response.status == 'connected')
       uid = response.authResponse.userID
       accessToken = response.authResponse.accessToken
       # console.log($localStorage.name)
       const dataId ={
         id:uid
         tk:accessToken
-      } 
+      }
       $http.post('http://127.0.0.1:3000/member/update',dataId)
       $rootScope.$apply(->
         $rootScope.tk = accessToken

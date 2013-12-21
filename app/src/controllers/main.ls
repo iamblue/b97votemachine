@@ -6,20 +6,20 @@ const cheatcodeDirective = ->
 		console.log(elem)
 		elem.bind('keypress',(e)->
 			switch(e.which)
-			case 98 then 
+			case 98 then
 				scope.$apply(->
 					scope.cCode.push(98)
-				)			
+				)
 			case 97 then
 				scope.$apply(->
 					scope.cCode.push(97)
 				)
 				if scope.cCode.length == 2 && scope.cCode[0] == 98
-					console.log \hihi 
+					console.log \hihi
 					alert('boombbbbbb')
 				else
 					scope.cCode.length = 0
-			default 	 	
+			default
 				scope.$apply(->
 					scope.cCode.length = 0
 				)
@@ -36,14 +36,14 @@ angular.module 'BadDriverApp'
 			else
 				FB.login((res) ->
 					console.log(res)
-					if(res.authResponse) 
-						FB.api('/me' 
+					if(res.authResponse)
+						FB.api('/me'
 							(response) !->
 								console.log(response)
 								fb_uid = response.id
 								fb_name = response.name
 								fb_email = response.email
-								
+
 								$rootScope.$apply( !->
 									$localStorage.name = response.name
 									$rootScope.name = response.name
@@ -114,9 +114,9 @@ page.section 1, (section) !->
 		#   console.log progress
 		#   ((from - come)/progress)
 	]
-	section.transitions [ 
+	section.transitions [
 		key: 'opacity'
-		start: 0 
+		start: 0
 		end: 100
 		from: 1
 		to: 0
@@ -126,5 +126,4 @@ page.section 1, (section) !->
 	]
 	section.on 'progress', (progress) !->
 		# console.log progress
-  
 
