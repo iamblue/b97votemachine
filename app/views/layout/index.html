@@ -1,47 +1,39 @@
-<section id="section1" class="section">
-  <div class="bg-pattern"></div>
-  <div id="header">
-    <a ng-click="update()" class="btn red small" style="float:right">我要檢舉</a>
-  </div>
-  <div class="content">
-    <h1 id="logotitle">
-      <div class="text" style="margin-top:100px">
-        BadDriver
-        <div class="mask">
-          <span>BadDriver</span>
-        </div>
-      </div>
-    </h1>
-    <h2 id="subtitle">還一個乾淨的路權給民眾</h2>
-    <div class="inline-field">
-      <input type="text" name="search" id="search" class="inline-field-search" placeholder="請輸入欲查詢車牌號碼..."/>
-      <input type="submit" name="submit" value="查詢" id="submit" class="inline-field-submit button gray-button" />
-    </div>
+<section class="section section--search">
+  <a ng-click="update()" class="section--search__report-btn">我要檢舉</a>
+  <div class="section--search__background"></div>
+  <div class="section--search__container">
+    <h1 class="section--search__title">BadDriver</h1>
+    <h2 class="section--search__subtitle">還一個乾淨的路權給民眾</h2>
+
+    <form class="section--search__form">
+      <input type="text" name="search" class="section--search__form__input" placeholder="請輸入欲查詢車牌號碼..."/>
+      <input type="submit" name="submit" value="查詢" id="submit" class="section--search__form__submit-btn" />
+    </form>
   </div>
 </section>
-<section id="section2" class="section">
-  s2<span id="section-2-opacity" style="background:#fff">section 2</span>
-  <div class="section-2-content">
-    <ul>
-      <li class="grid">
-        <div class="info">
-          <iframe width="220" height="155" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
+
+<section class="section section--video-list">
+  <div class="section--video-list__content">
+    <ul class="section--video-list__list">
+      <li class="section--video-list__item section--video-list__item--left">
+        <div class="section--video-list__item__info">
+          <iframe width="100%" height="200" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
           車牌{{'PS6005'}}<br/>
           {{'新北市'}}
           <a class="btn red" style="width:95%">點我看詳情</a>
         </div>
       </li>
-      <li class="grid">
-        <div class="info">
-          <iframe width="220" height="155" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
+      <li class="section--video-list__item">
+        <div class="section--video-list__item__info">
+          <iframe width="100%" height="200" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
           車牌{{'PS6005'}}<br/>
           {{'新北市'}}
           <a class="btn red" style="width:95%">點我看詳情</a>
         </div>
       </li>
-      <li class="grid">
-        <div class="info">
-          <iframe width="220" height="155" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
+      <li class="section--video-list__item section--video-list__item--right">
+        <div class="section--video-list__item__info">
+          <iframe width="100%" height="200" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
           車牌{{'PS6005'}}<br/>
           {{'新北市'}}
           <a class="btn red" style="width:95%">點我看詳情</a>
@@ -49,9 +41,12 @@
       </li>
     </ul>
   </div>
-  <div id="footer">
-    <p>BadDriver (c) 2013</p>
-  </div>
 </section>
 
+<section class="section section--description">
+  <div class="section--description__background"></div>
+</section>
 
+<div class="page-footer">
+  <p>BadDriver (c) 2013</p>
+</div>
