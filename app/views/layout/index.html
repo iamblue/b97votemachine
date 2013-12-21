@@ -15,27 +15,11 @@
 <section class="section section--video-list">
   <div class="section--video-list__content">
     <ul class="section--video-list__list">
-      <li class="section--video-list__item section--video-list__item--left">
+      <li class="section--video-list__item section--video-list__item--left" ng-repeat="d in idata">
         <div class="section--video-list__item__info">
-          <iframe width="100%" height="200" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
-          車牌{{'PS6005'}}<br/>
-          {{'新北市'}}
-          <a class="btn red" style="width:95%">點我看詳情</a>
-        </div>
-      </li>
-      <li class="section--video-list__item section--video-list__item--middle">
-        <div class="section--video-list__item__info">
-          <iframe width="100%" height="200" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
-          車牌{{'PS6005'}}<br/>
-          {{'新北市'}}
-          <a class="btn red" style="width:95%">點我看詳情</a>
-        </div>
-      </li>
-      <li class="section--video-list__item section--video-list__item--right">
-        <div class="section--video-list__item__info">
-          <iframe width="100%" height="200" src="//www.youtube.com/embed/6AL_s755H38" frameborder="0" allowfullscreen></iframe>
-          車牌{{'PS6005'}}<br/>
-          {{'新北市'}}
+          <iframe width="100%" height="200" src="{{urldata[$index]}}" frameborder="0" allowfullscreen></iframe>
+          車牌{{snumber[$index]}}<br/>
+          {{d.city}} || {{d.location}}
           <a class="btn red" style="width:95%">點我看詳情</a>
         </div>
       </li>
