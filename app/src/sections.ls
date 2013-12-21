@@ -25,6 +25,7 @@ page.section 0, (section) !->
 page.section 1, (section) !->
   leftOne = document.querySelector '.section--video-list__item--left'
   rightOne = document.querySelector '.section--video-list__item--right'
+  middleOne = document.querySelector '.section--video-list__item--middle'
 
   section.transitions [
     # left
@@ -34,12 +35,15 @@ page.section 1, (section) !->
     # right
     {key: 'opacity', start: 0, end: 100, from: 0, to: 1, format: '%s', target: rightOne}
     {key: 'transform', start: 0, end: 100, from: 200, to: 0, format: 'translate3d(%spx, 0, 0)', target: rightOne, prefix: true}
+
+    # middle
+    {key: 'opacity', start: 0, end: 100, from: 0, to: 1, format: '%s', target: middleOne}
   ]
 
 page.section 2, (section) !->
   background = document.querySelector '.section--description__background'
 
   section.transitions [
-    {key: 'transform', start: 0, end: 100, from: -100, to: 0, format: 'translate3d(0, %spx, 0)', target: background, prefix: true}
+    {key: 'transform', start: 0, end: 100, from: -100, to: 50, format: 'translate3d(0, %spx, 0)', target: background, prefix: true}
     {key: 'opacity', start: 0, end: 100, from: 0.2, to: 0.6, format: '%s', target: background}
   ]
