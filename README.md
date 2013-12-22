@@ -6,6 +6,12 @@ This is BadDriver.tw front-end.
 BadDriver api server (Use YoumebJS framework& Mysql):
 [click here](https://github.com/g0v/baddriver)
 
+##Usage
+
+1.`npm install`
+2.`npm start`
+
+
 ##專案構想
 https://g0v.hackpad.com/BadDriver-sDcFsbD58zo
 
