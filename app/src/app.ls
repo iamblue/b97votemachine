@@ -9,6 +9,7 @@ app = window.app = angular.module 'BadDriverApp', [
 ]
 
 app.config ($stateProvider, $urlRouterProvider) !->
+
   fbAppId = '1422387521330282'
   FB.init(
     appId      : fbAppId

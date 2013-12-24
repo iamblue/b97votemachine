@@ -38,6 +38,8 @@ const cheatcodeDirective = ->
 		)
 
 app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http idata $sce]> ++ ($scope, $location, $rootScope, $localStorage, $http, idata, $sce) !->
+		$http.defaults.useXDomain = true
+
 		$scope.scale = ['section--video-list__item--left','section--video-list__item--middle','section--video-list__item--right']
 		$scope.idata = idata.data.data
 		$scope.urldata = []
@@ -62,9 +64,23 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
 		$http.defaults.useXDomain = true
 
 		$scope.cCode = []
+		$scope.search = ->
+			$scope.resultdata = []
+			$scope.clicksearch = true
+			$http(
+				method: 'GET'
+				url: 'http://api.dont-throw.com/data/search?number='+$scope.carnumber
+			).success((d)!->
+				$scope.resaultnum = d.data.length 
+				$scope.result = d.data
+				if( d.data.length !=0)
+					$scope.noresult = false
+					$scope.resultdata[0] = $sce.trustAsResourceUrl '//www.youtube.com/embed/'+d.data.urlid
+				else
+					$scope.noresult =true
+			)
 
 		$scope.update = ->
-			console.log \123
 			if ($rootScope.fbid)
 				$location.path('/update')
 			else
@@ -98,19 +114,36 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
 					false
 				)
 
-app.controller 'updateCtrl', <[$scope $location $http $rootScope]> ++ ($scope, $location, $http, $rootScope) !->
+app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce]> ++ ($scope, $location, $http, $rootScope, $sce) !->
 		$http.defaults.useXDomain = true
 		$scope.send= ->
 			const data = {
 				id: $rootScope.fbid
 				tk: $rootScope.tk
 				urlid: $scope.url
-				number: $scope.number
+				number: $scope.unumber
 				city: $scope.city
 				location: $scope.location
 				description: $scope.description
 				fbid:$rootScope.fbid
 			}
 			$http.post('http://api.dont-throw.com/data/add',data)
-
+		$scope.checkurl = ->
+			url = $scope.url
+			url = url.replace('https://www.youtube.com/watch?v=','')
+			url = url.replace('http://www.youtube.com/watch?v=','')
+			_tmp = url.split('&')
+			console.log _tmp
+			$scope.url = _tmp[0]
+			$scope.change = true
+			$scope.urldata = $sce.trustAsResourceUrl '//www.youtube.com/embed/'+_tmp[0]
+		$scope.gosearchid = ->
+			$http(
+				method: 'GET'
+				url: 'http://api.dont-throw.com/data/youtube?id='+$scope.url
+			).success((d)!->
+				if(d.res == 'success')
+					$scope.description = d.data.description
+			)
+			console.log \123
 app.directive 'cheatCode' cheatcodeDirective

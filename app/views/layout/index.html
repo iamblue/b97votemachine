@@ -1,14 +1,23 @@
 <section class="section section--search">
   <a ng-click="update()" class="section--search__report-btn">我要檢舉</a>
   <div class="section--search__background"></div>
-  <div class="section--search__container">
+  <div class="section--search__container" ng-class="clicksearch ? 'moveleft':''">
     <h1 class="section--search__title">BadDriver</h1>
     <h2 class="section--search__subtitle">還一個乾淨的路權給民眾</h2>
-
-    <form class="section--search__form">
-      <input type="text" name="search" class="section--search__form__input" placeholder="請輸入欲查詢車牌號碼..."/>
-      <input type="submit" name="submit" value="查詢" id="submit" class="section--search__form__submit-btn" />
+    <form class="section--search__form" >
+      <input type="text" name="search" class="section--search__form__input" placeholder="請輸入欲查詢車牌號碼..." ng-model="carnumber"/>
+      <input type="submit" name="submit" value="查詢" id="submit" class="section--search__form__submit-btn" ng-click="search()"/>
     </form>
+  </div>
+  <div class="section--search__container" ng-class="clicksearch ? 'resaultmove':''" ng-show="clicksearch">
+    <div class="noresult" ng-show="noresult">
+    </div>
+    <a class="section--search__report-btn" ng-hide="noresult">點我看詳情</a>
+    <!-- <a style="color:#fff">1</a> -->
+    <iframe width="90%" height="200" ng-hide="noresult" src="{{resultdata[0]}}" frameborder="0" style="margin-left:5%"allowfullscreen></iframe>
+    <!-- <a style="color:#fff">1</a> -->
+    <h1 class="section--search__title">{{carnumber}}</h1>
+    <h2 class="section--search__subtitle">找到{{resaultnum}}筆資料</h2>
   </div>
 </section>
 <section class="section section--video-list">
