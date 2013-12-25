@@ -8,23 +8,24 @@
 		</li>
 		<li>
 		url:
-		<input type="text" ng-model="url" value="{{url}}" placeholder="請輸入檢舉影片網址" ng-change="checkurl()" ng-mouseleave="gosearchid()"/>
+		<input type="text" ng-model="url" value="{{url}}" placeholder="請輸入檢舉影片網址" ng-change="checkurl()" ng-mouseleave="gosearchid()" class="section--search__form__input"/>
+		<input type="submit" name="submit" value="查詢" id="submit" class="section--search__form__submit-btn" ng-click="search()"/>
 		<b ng-show="change">已轉成id</b>
 		</li>
 		<li>
-			number:
+			<span class="update-item">number:</span>
 			<input type="text" ng-model="unumber" value="{{unumber}}" placeholder="請輸入車牌號碼..."/>
 		</li>
 		<li>
-			city:
+			<span class="update-item">city:</span>
 			<input type="text" ng-model="city" value="{{city}}" placeholder="請輸入發生所在城市..."/>
 		</li>
 		<li>
-			location:
+			<span class="update-item">location:</span>
 			<input type="text" ng-model="location" value="{{location}}" placeholder="請輸入地址描述..."/>
 		</li>
 		<li>
-			description:
+			<span class="update-item">description:</span>
 			<textarea type="text" ng-model="description" value="{{description}}" placeholder="請描述相關"></textarea>
 		</li>
 		<li>
