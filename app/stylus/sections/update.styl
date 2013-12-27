@@ -5,9 +5,47 @@
 
 .section--update__container
 	// background: #fff
-	height: 500px
-	transform: translate3d(-300px, -250px, 0)
+	position:absolute
+	height: 400px
+	width:500px
+	left:50%
+	top:50%
+	margin-left:-250px
+	margin-top:-200px
+	background:#fff
+	z-index:10
+	// transform: translate3d(-300px, -250px, 0)
 
+.section--update__form__submit-btn
+  position: absolute
+  right: 0
+  top: 0
+  font-size: 14px
+  letter-spacing: 1px
+  background: #FA5A5A
+  border: none
+  color: #FFF
+  border-bottom: 2px rgba(0, 0, 0, .21) solid
+  box-sizing: border-box
+  height: 40px
+  width: 50px
+  text-align: center
+  opacity: .8
+
+.section--update__form__input
+  position: absolute
+  left: 0
+  top: 0
+  background: rgba(255, 255, 255, .5)
+  color: #000
+  font-size: 14px
+  letter-spacing: 1px
+  border: none
+  border-bottom: 2px rgba(255, 255, 255, .4) solid
+  width: 200px
+  box-sizing: border-box
+  padding: 0 10px
+  height: 40px
 
 @keyframes movetoleft
 	from {

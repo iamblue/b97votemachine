@@ -25,7 +25,7 @@ input,textarea{outline:none}
 .section--search__form__input::placeholder{color:#333}
 .section--search__form__submit-btn{position:absolute;right:0;top:0;font-size:14px;letter-spacing:1px;background:#fa5a5a;border:none;color:#fff;border-bottom:2px rgba(0,0,0,0.21) solid;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;height:40px;width:50px;text-align:center;opacity:.8;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";filter:alpha(opacity=80)}
 .section--update{width:100%;height:100%;background:url("../img/bg.jpg") no-repeat}
-.section--update__container{height:500px;-webkit-transform:translate3d(-300px,-250px,0);-moz-transform:translate3d(-300px,-250px,0);-o-transform:translate3d(-300px,-250px,0);-ms-transform:translate3d(-300px,-250px,0);transform:translate3d(-300px,-250px,0)}
+.section--update__container{position:absolute;height:400px;width:500px;left:50%;top:50%;margin-left:-250px;margin-top:-200px;background:#fff;z-index:10}
 .moveleft{-webkit-animation:movetoleft 1s ease;-moz-animation:movetoleft 1s ease;-o-animation:movetoleft 1s ease;-ms-animation:movetoleft 1s ease;animation:movetoleft 1s ease;left:20%}
 .resaultmove{display:block;-webkit-animation:movetoresault 1s ease;-moz-animation:movetoresault 1s ease;-o-animation:movetoresault 1s ease;-ms-animation:movetoresault 1s ease;animation:movetoresault 1s ease;left:60%}
 .noresult{width:100%;height:50px}

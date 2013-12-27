@@ -1,37 +1,12 @@
 <section class="section section--search">
-
-<div class="section--search__background"></div>
-<div class="section--search__container section--update__container">
-	<ul>
-		<li>
-			<iframe width="100%" height="200" src="{{urldata}}" frameborder="0" allowfullscreen></iframe>
-		</li>
-		<li>
-		url:
-		<input type="text" ng-model="url" value="{{url}}" placeholder="請輸入檢舉影片網址" ng-change="checkurl()" ng-mouseleave="gosearchid()" class="section--search__form__input"/>
-		<input type="submit" name="submit" value="查詢" id="submit" class="section--search__form__submit-btn" ng-click="search()"/>
-		<b ng-show="change">已轉成id</b>
-		</li>
-		<li>
-			<span class="update-item">number:</span>
-			<input type="text" ng-model="unumber" value="{{unumber}}" placeholder="請輸入車牌號碼..."/>
-		</li>
-		<li>
-			<span class="update-item">city:</span>
-			<input type="text" ng-model="city" value="{{city}}" placeholder="請輸入發生所在城市..."/>
-		</li>
-		<li>
-			<span class="update-item">location:</span>
-			<input type="text" ng-model="location" value="{{location}}" placeholder="請輸入地址描述..."/>
-		</li>
-		<li>
-			<span class="update-item">description:</span>
-			<textarea type="text" ng-model="description" value="{{description}}" placeholder="請描述相關"></textarea>
-		</li>
-		<li>
-			<a ng-click="send()" class="section--search__report-btn">送出</a>
-		</li>
-	</ul>
-
-</div>
+	<div class="section--search__background"></div>
+	<div class="section--update__container">
+		<div class="section--update__div">
+			<iframe width="100%" height="300" src="{{urldata}}" frameborder="0" allowfullscreen></iframe>
+		</div>
+		<div class="section--update__input__div">
+			<input type="text" name="search" class="section--update__form__input" placeholder="請輸入欲查詢車牌號碼..." ng-model="carnumber"/>
+			<input type="submit" name="submit" value="查詢" id="submit" class="section--update__form__submit-btn" ng-click="search()"/>
+		</div>
+	</div>
 </section>
