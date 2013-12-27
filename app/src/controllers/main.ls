@@ -124,11 +124,13 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce]> ++ ($sco
 				$scope.fullnum = true	
 		$scope.send= ->
 			if($scope.nlist.length!= 0 && $scope.location && $scope.description && $scope.city && $scope.url )
+				_num = $scope.nlist[0].toString().replace(/\s/g,'').replace(/\-/g,'').toUpperCase()
+				
 				const data = {
 					id: $rootScope.fbid
 					tk: $rootScope.tk
 					urlid: $scope.url
-					number: $scope.nlist[0]
+					number: _num
 					city: $scope.city
 					location: $scope.location
 					description: $scope.description
@@ -141,6 +143,18 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce]> ++ ($sco
 					else
 						alert('Oops! 再試一次')
 				)
+			else
+				if($scope.nlist[0] == 0)
+					alert('車牌號碼不可為空')
+				if(!$scope.location)
+					alert('地區不可為空')
+				if(!$scope.city)
+					alert('城市不可為空')
+				if(!$scope.description)
+					alert('描述不可為空')
+				if(!$scope.url)
+					alert('網址不可為空')
+				
 		$scope.addnewbtn = ->
 			$scope.wantaddnumber = !$scope.wantaddnumber
 		$scope.checkurl = ->
