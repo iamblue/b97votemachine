@@ -116,18 +116,29 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
 
 app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce]> ++ ($scope, $location, $http, $rootScope, $sce) !->
 		$http.defaults.useXDomain = true
+		$scope.nlist = []
+		$scope.addnum = !->
+			if($scope.nlist.length == 0)
+				$scope.nlist.push($scope.inputnum)
+				$scope.wantaddnumber = false
+				$scope.fullnum = true	
 		$scope.send= ->
-			const data = {
-				id: $rootScope.fbid
-				tk: $rootScope.tk
-				urlid: $scope.url
-				number: $scope.unumber
-				city: $scope.city
-				location: $scope.location
-				description: $scope.description
-				fbid:$rootScope.fbid
-			}
-			$http.post('http://api.dont-throw.com/data/add',data)
+			if($scope.nlist.length!= 0 && $scope.location && $scope.description && $scope.city && $scope.url )
+				const data = {
+					id: $rootScope.fbid
+					tk: $rootScope.tk
+					urlid: $scope.url
+					number: $scope.nlist[0]
+					city: $scope.city
+					location: $scope.location
+					description: $scope.description
+					fbid:$rootScope.fbid
+				}
+				$http.post('http://api.dont-throw.com/data/add',data).success((v)->
+					alert('已貼文成功！')
+				)
+		$scope.addnewbtn = ->
+			$scope.wantaddnumber = !$scope.wantaddnumber
 		$scope.checkurl = ->
 			url = $scope.url
 			url = url.replace('https://www.youtube.com/watch?v=','')
