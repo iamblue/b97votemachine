@@ -76,11 +76,13 @@
         method: 'GET',
         url: 'http://api.dont-throw.com/data/search?number=' + $scope.carnumber
       }).success(function(d){
+        var _url;
         $scope.resaultnum = d.data.length;
         $scope.result = d.data;
         if (d.data.length !== 0) {
           $scope.noresult = false;
-          $scope.resultdata[0] = $sce.trustAsResourceUrl('//www.youtube.com/embed/' + d.data.urlid);
+          _url = '//www.youtube.com/embed/' + d.data[0].urlid;
+          $scope.resultdata[0] = $sce.trustAsResourceUrl(_url);
         } else {
           $scope.noresult = true;
         }
@@ -123,14 +125,18 @@
       }
     };
   }));
-  app.controller('detailCtrl', ['$scope', '$location', '$http', 'infodata'].concat(function($scope, $location, $http, infodata){
-    $scope.dnum = infodata.data.number;
+  app.controller('detailCtrl', ['$scope', '$location', '$http', 'infodata', '$sce'].concat(function($scope, $location, $http, infodata, $sce){
+    var _url;
+    infodata.data = infodata.data.data;
+    $scope.dlist = [];
+    $scope.dlist[0] = infodata.data.number;
     $scope.dcity = infodata.data.city;
     $scope.dlocation = infodata.data.location;
     $scope.dlike = infodata.data.like;
     $scope.ddislike = infodata.data.dislike;
     $scope.ddesp = infodata.data.description;
-    $scope.durl = infodata.data.url;
+    _url = '//www.youtube.com/embed/' + infodata.data.urlid;
+    $scope.durldata = $sce.trustAsResourceUrl(_url);
   }));
   app.controller('updateCtrl', ['$scope', '$location', '$http', '$rootScope', '$sce'].concat(function($scope, $location, $http, $rootScope, $sce){
     $http.defaults.useXDomain = true;
@@ -186,7 +192,7 @@
       return $scope.wantaddnumber = !$scope.wantaddnumber;
     };
     $scope.checkurl = function(){
-      var url, _tmp;
+      var url, _tmp, _url;
       url = $scope.url;
       url = url.replace('https://www.youtube.com/watch?v=', '');
       url = url.replace('http://www.youtube.com/watch?v=', '');
@@ -194,7 +200,8 @@
       console.log(_tmp);
       $scope.url = _tmp[0];
       $scope.change = true;
-      return $scope.urldata = $sce.trustAsResourceUrl('//www.youtube.com/embed/' + _tmp[0]);
+      _url = '//www.youtube.com/embed/' + _tmp[0];
+      return $scope.urldata = $sce.trustAsResourceUrl(_url);
     };
     $scope.gosearchid = function(){
       $http({
