@@ -26,7 +26,7 @@ app.config ($stateProvider, $urlRouterProvider) !->
         idata: ($http)->
           $http(
             method: 'GET'
-            url: 'http://api.dont-throw.com/data/all'
+            url: 'http://api.dont-throw.com/data/last'
           )
       }
       templateUrl: '/views/layout/index.html'

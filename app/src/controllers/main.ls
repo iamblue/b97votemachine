@@ -135,7 +135,11 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce]> ++ ($sco
 					fbid:$rootScope.fbid
 				}
 				$http.post('http://api.dont-throw.com/data/add',data).success((v)->
-					alert('已貼文成功！')
+					if(v.res == 'success')
+						alert('感謝您，已貼文成功！')
+						$location.path('/')
+					else
+						alert('Oops! 再試一次')
 				)
 		$scope.addnewbtn = ->
 			$scope.wantaddnumber = !$scope.wantaddnumber
