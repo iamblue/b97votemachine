@@ -37,10 +37,17 @@ app.config ($stateProvider, $urlRouterProvider) !->
       templateUrl: '/views/layout/update.html'
       controller: 'updateCtrl'
     }
-    .state 'info', {
-      url: '/info/:id'
-      templateUrl: '/views/layout/info.html'
-      controller: 'infoCtrl'
+    .state 'detail', {
+      url: '/detail/:id'
+      resolve:{
+        infodata:($http,$stateParams)->
+          $http(
+            method:'GET'
+            url: 'http://api.dont-throw.com/data/get/'+$stateParams.id
+          )
+      }
+      templateUrl: '/views/layout/detail.html'
+      controller: 'detailCtrl'
     }
 
 app.run <[$rootScope $location $localStorage $http]> ++ ($rootScope, $location, $localStorage, $http) !->

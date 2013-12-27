@@ -123,6 +123,15 @@
       }
     };
   }));
+  app.controller('detailCtrl', ['$scope', '$location', '$http', 'infodata'].concat(function($scope, $location, $http, infodata){
+    $scope.dnum = infodata.data.number;
+    $scope.dcity = infodata.data.city;
+    $scope.dlocation = infodata.data.location;
+    $scope.dlike = infodata.data.like;
+    $scope.ddislike = infodata.data.dislike;
+    $scope.ddesp = infodata.data.description;
+    $scope.durl = infodata.data.url;
+  }));
   app.controller('updateCtrl', ['$scope', '$location', '$http', '$rootScope', '$sce'].concat(function($scope, $location, $http, $rootScope, $sce){
     $http.defaults.useXDomain = true;
     $scope.nlist = [];
@@ -156,7 +165,7 @@
           }
         });
       } else {
-        if ($scope.nlist[0] === 0) {
+        if ($scope.nlist.length === 0) {
           alert('車牌號碼不可為空');
         }
         if (!$scope.location) {
