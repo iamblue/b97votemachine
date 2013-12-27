@@ -144,7 +144,7 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce]> ++ ($sco
 						alert('Oops! 再試一次')
 				)
 			else
-				if($scope.nlist[0] == 0)
+				if($scope.nlist.length == 0)
 					alert('車牌號碼不可為空')
 				if(!$scope.location)
 					alert('地區不可為空')
