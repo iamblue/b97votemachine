@@ -1,11 +1,156 @@
+@keyframes dislike 
+  from{
+    transform:rotateY(0deg)
+  }
+  to{
+   transform:rotateY(720deg) 
+  }
+@keyframes boat
+  from{
+    transform:translate3d(-200px,150px,0)
+  }
+  to{
+    transform:translate3d(700px,150px,0)
+  }
+@keyframes small3
+  from{
+    transform:translate3d(-200px,0px,0)
+  }
+  to{
+    transform:translate3d(700px,0px,0)
+  }
+@keyframes delyear
+  from{
+    transform:translate3d(-200px,0px,0)
+  }
+  to{
+    transform:translate3d(700px,0px,0)
+  }
+
 .dcontent
-	color:#e0e0e0
-	font-size:1.2em
-	line-height:1.2em
-	opacity:.8
-	font-family: 'Poiret One', cursive
+  color:#e0e0e0
+  font-size:1.2em
+  line-height:1.2em
+  opacity:.8
+  font-family: 'Poiret One', cursive
 
 .dcontent.desp
-	width:330px
-	height:180px
-	overflow:hidden
+  width:330px
+  height:180px
+  overflow:hidden
+.section--detail__dislike
+  width:120px
+  height:60px
+  right:16px
+  top:0
+  position:absolute
+
+.section--detail__dislike__img
+  background:url('../img/dislike.png')
+  width:60px
+  height:51px
+  position:absolute
+  background-size:100%
+  animation: dislike 2s ease
+  cursor:pointer
+
+.section--detail__dislike__num
+  width:3em
+  height:1.5em
+  border:2px solid #6475ab
+  position:absolute
+  right:0
+
+.section--detail__dislike__num p
+  color:#f0d335
+  text-align:right
+  font-size:1.5em  
+.section--detail__btn__fr 
+  width:500px
+  height:50px
+  position:absolute
+  li
+    display:inline-block
+    margin-left: -0.35em;
+    width:125px
+    height:100%
+    // text-align:center
+    a
+      width:125px
+      height:100%
+      position: absolute
+      transform: translate3d(0, 0, 0)
+      color: #FFF
+      letter-spacing: 5px
+      cursor: pointer
+      opacity: .8
+      line-height:4em
+      text-align:center
+      // z-index: 3
+      // right:0px
+      &:hover
+        margin-top: 1px
+        border-bottom-width: 4px
+      &:active
+        margin-top: 4px
+        border-bottom-width: 1px
+    a.red
+      background: #FA5A5A
+      border-bottom: 5px rgba(0, 0, 0, .21) solid
+      &:active
+        background-color: #ff4c4b
+    a.orange
+      background: #f1ae20
+      border-bottom: 5px #ed935c solid
+      &:active
+        background-color: #ed7f3c
+    a.yellow
+      background: #efdd23
+      border-bottom: 5px #eec94a solid
+      &:active
+        background-color: #ecc230
+    a.blue
+      background: #99acea
+      border-bottom: 5px #78ace2 solid
+      &:active
+        background-color: #62a0e0
+    a.purple
+      background: #dfb0f1
+      border-bottom: 5px #da9bf0 solid
+      &:active
+        background-color: #d278f1
+    a.green
+      background:#b8e759
+      border-bottom:5px #94d63b solid
+      &:active
+        background-color:#90ca1d
+.funnyitem
+  position:absolute
+  width:500px
+  height:300px
+  overflow:hidden
+  left:0
+  top:0
+  pointer-events:none
+  .boat
+    position: relative;
+    
+    width:200px
+    animation: boat 4s ease
+    height:143px
+    // right:200px
+    transform:translate3d(700px,0px,0)
+    background:url('../img/boat.png')  
+  .small3
+    position: relative;
+    animation:small3 4s ease
+    color:#FFF
+    // right:200px
+    transform:translate3d(700px,0px,0)
+    font-size:3em   
+  .delyear
+    position: relative;
+    animation:delyear 4s ease
+    color:#FFF
+    font-size:3em 
+    transform:translate3d(700px,0px,0)

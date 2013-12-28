@@ -31,10 +31,15 @@
     }).state('detail', {
       url: '/detail/:id',
       resolve: {
-        infodata: function($http, $stateParams){
+        infodata: function($http, $stateParams, $location){
           return $http({
             method: 'GET',
             url: 'http://api.dont-throw.com/data/get/' + $stateParams.id
+          }).success(function(d){
+            if (d.data === null) {
+              alert('很抱歉找不到此資料！');
+              return $location.path('/');
+            }
           });
         }
       },

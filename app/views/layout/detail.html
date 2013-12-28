@@ -1,14 +1,31 @@
 <section class="section section--search">
 	<div class="section--search__background"></div>
 	<div class="section--update__container active">
-		<div class="section--update__div">
+		<div class="section--update__div section--detail__div">
 			<ul class="numlistpool"> 
 				<li class="numlist" ng-repeat=" o in dlist">{{o}}</li>
 			</ul>
 			<iframe width="100%" height="300" src="{{durldata}}" frameborder="0" allowfullscreen></iframe>
+			<ul class="funnyitem">
+				<li class="boat" ng-repeat="_b in boat"><li>
+				<li class="small3" ng-repeat="_s in small3">叭三小<li>
+				<li class="delyear" ng-repeat="_d in delyear">夭壽喔~<li>
+			</ul>
 		</div>
+		<ul class="section--detail__btn__fr">
+			<li><a class="orange" ng-click="addfunny('small3')">叭三小</a></li>
+			<li><a class="orange" ng-click="addfunny('boat')">護航</a></li>
+			<li><a class="orange" ng-click="addfunny('delyear')">夭壽喔</a></li>
+			<li><a class="red">HighLight</a></li>
+		</ul>
 	</div>
 	<div class="section--update__container__info active">
+		<div class="section--detail__dislike">
+			<a class="section--detail__dislike__img" ng-click="dislikeit()"></a>
+			<div class="section--detail__dislike__num">
+				<p>{{ddislike}}</p>
+			</div>
+		</div>
 		<ul>
 			<li>
 				<span class="title">City</span>

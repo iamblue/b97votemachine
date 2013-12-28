@@ -40,10 +40,14 @@ app.config ($stateProvider, $urlRouterProvider) !->
     .state 'detail', {
       url: '/detail/:id'
       resolve:{
-        infodata:($http,$stateParams)->
+        infodata:($http,$stateParams,$location)->
           $http(
             method:'GET'
             url: 'http://api.dont-throw.com/data/get/'+$stateParams.id
+          ).success((d)->
+            if(d.data == null)
+              alert('很抱歉找不到此資料！')
+              $location.path('/')
           )
       }
       templateUrl: '/views/layout/detail.html'

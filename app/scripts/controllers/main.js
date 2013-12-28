@@ -127,6 +127,7 @@
   }));
   app.controller('detailCtrl', ['$scope', '$location', '$http', 'infodata', '$sce'].concat(function($scope, $location, $http, infodata, $sce){
     var _url;
+    page.init();
     infodata.data = infodata.data.data;
     $scope.dlist = [];
     $scope.dlist[0] = infodata.data.number;
@@ -137,8 +138,35 @@
     $scope.ddesp = infodata.data.description;
     _url = '//www.youtube.com/embed/' + infodata.data.urlid;
     $scope.durldata = $sce.trustAsResourceUrl(_url);
+    $scope.boat = [];
+    $scope.delyear = [];
+    $scope.small3 = [];
+    $scope.dislikeit = function(){
+      return $http({
+        method: 'GET',
+        url: 'http://api.dont-throw.com/data/dislike?id=' + $stateParams.id
+      }).success(function(d){
+        return console.log(d);
+      });
+    };
+    $scope.addfunny = function(c){
+      var _i;
+      _i = new Date();
+      switch (c) {
+      case 'boat':
+        $scope.boat.push(_i);
+        break;
+      case 'delyear':
+        $scope.delyear.push(_i);
+        break;
+      case 'small3':
+        $scope.small3.push(_i);
+        break;
+      }
+    };
   }));
   app.controller('updateCtrl', ['$scope', '$location', '$http', '$rootScope', '$sce'].concat(function($scope, $location, $http, $rootScope, $sce){
+    page.init();
     $http.defaults.useXDomain = true;
     $scope.nlist = [];
     $scope.addnum = function(){
