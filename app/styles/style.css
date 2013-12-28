@@ -24,6 +24,9 @@ input,textarea{outline:none}
 .section--search__form__input{position:absolute;left:0;top:0;background:rgba(255,255,255,0.5);color:#000;font-size:14px;letter-spacing:1px;border:none;border-bottom:2px rgba(255,255,255,0.4) solid;width:200px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0 10px;height:40px;}
 .section--search__form__input::placeholder{color:#333}
 .section--search__form__submit-btn{position:absolute;right:0;top:0;font-size:14px;letter-spacing:1px;background:#fa5a5a;border:none;color:#fff;border-bottom:2px rgba(0,0,0,0.21) solid;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;height:40px;width:50px;text-align:center;opacity:.8;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";filter:alpha(opacity=80)}
+.section--search__info__btn{position:absolute;-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-o-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0);background:#fa5a5a;color:#fff;padding:3px 10px;border-bottom:5px rgba(0,0,0,0.21) solid;letter-spacing:2px;cursor:pointer;opacity:.8;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";filter:alpha(opacity=80);text-decoration:none;right:10px;bottom:10px;}
+.section--search__info__btn:hover{margin-top:1px;border-bottom-width:4px}
+.section--search__info__btn:active{background-color:#ff4c4b;margin-top:4px;border-bottom-width:1px}
 .section--update{width:100%;height:100%;background:url("../img/bg.jpg") no-repeat}
 .section--update__container{position:absolute;height:400px;width:500px;left:50%;top:50%;-webkit-transform:translate3d(-250px,-200px,0);-moz-transform:translate3d(-250px,-200px,0);-o-transform:translate3d(-250px,-200px,0);-ms-transform:translate3d(-250px,-200px,0);transform:translate3d(-250px,-200px,0);z-index:10}
 .section--update__container.active{-webkit-animation:updatemovetoleft .8s ease;-moz-animation:updatemovetoleft .8s ease;-o-animation:updatemovetoleft .8s ease;-ms-animation:updatemovetoleft .8s ease;animation:updatemovetoleft .8s ease;-webkit-transform:translate3d(-425px,-200px,0);-moz-transform:translate3d(-425px,-200px,0);-o-transform:translate3d(-425px,-200px,0);-ms-transform:translate3d(-425px,-200px,0);transform:translate3d(-425px,-200px,0)}
@@ -40,7 +43,7 @@ span.title{font-family:'Poiret One',cursive;color:#e0e0e0;font-weight:bold;font-
 .section--update__form__sub__textarea{background:rgba(255,255,255,0.5);color:#000;font-size:14px;letter-spacing:1px;border:none;border-bottom:2px rgba(255,255,255,0.4) solid;width:300px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0 10px;height:125px}
 .section--update__div{width:500px}
 .section--update__div > iframe{width:100%;height:300px;background:#000}
-.moveleft{-webkit-animation:movetoleft 1s ease;-moz-animation:movetoleft 1s ease;-o-animation:movetoleft 1s ease;-ms-animation:movetoleft 1s ease;animation:movetoleft 1s ease;left:20%}
+.moveleft{-webkit-animation:movetoleft 1s ease;-moz-animation:movetoleft 1s ease;-o-animation:movetoleft 1s ease;-ms-animation:movetoleft 1s ease;animation:movetoleft 1s ease;left:25%}
 .resaultmove{display:block;-webkit-animation:movetoresault 1s ease;-moz-animation:movetoresault 1s ease;-o-animation:movetoresault 1s ease;-ms-animation:movetoresault 1s ease;animation:movetoresault 1s ease;left:60%}
 .noresult{width:100%;height:50px}
 .update-item{width:150px;text-align:left}
@@ -57,15 +60,15 @@ span.title{font-family:'Poiret One',cursive;color:#e0e0e0;font-weight:bold;font-
 .numlistpool{pointer-events:none;position:absolute;height:50px;top:-2em;width:100%}
 .numlist{color:#fff;font-size:2em;font-family:'Poiret One',cursive}
 @-moz-keyframes movetoleft{0%{left:50%}
-100%{left:20%}
+100%{left:25%}
 }@-webkit-keyframes movetoleft{0%{left:50%}
-100%{left:20%}
+100%{left:25%}
 }@-o-keyframes movetoleft{0%{left:50%}
-100%{left:20%}
+100%{left:25%}
 }@-ms-keyframes movetoleft{0%{left:50%}
-100%{left:20%}
+100%{left:25%}
 }@keyframes movetoleft{0%{left:50%}
-100%{left:20%}
+100%{left:25%}
 }@-moz-keyframes movetoresault{0%{left:50%}
 100%{left:60%}
 }@-webkit-keyframes movetoresault{0%{left:50%}

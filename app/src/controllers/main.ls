@@ -42,6 +42,7 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
 
     $scope.scale = ['section--video-list__item--left','section--video-list__item--middle','section--video-list__item--right']
     $scope.idata = idata.data.data
+    console.log $scope.idata
     $scope.urldata = []
     $rootScope.snumber = []
     $rootScope.number = []
@@ -80,8 +81,9 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
         else
           $scope.noresult =true
       )
-    $scope.goinfo = (id)->
-      $location.path('/detail/'+id)
+    $scope.goinfo = ->
+      # console.log($scope.result[])
+      $location.path('/detail/'+$scope.result[0].id)
     $scope.update = ->
       if ($rootScope.fbid)
         $location.path('/update')
@@ -131,18 +133,51 @@ app.controller 'detailCtrl', <[$scope $location $http infodata $sce $rootScope $
     $scope.delyear = []
     $scope.small3 = []
     $scope.dislikeit = ->
-      const votedata ={
+      if ($rootScope.fbid)
+        const votedata ={
         tk:$rootScope.tk
         id:$stateParams.id
         userid:$rootScope.fbid
-      }
-      $http.post('http://api.dont-throw.com/data/dislike',votedata).success(
-        (v)->
-          if v.res == \success
-            $scope.ddislike = Number($scope.ddislike) + 1
-          else if v.res == \voted
-            alert('您已評比過！')
-      )
+        }
+        $http.post('http://api.dont-throw.com/data/dislike',votedata).success(
+          (v)->
+            if v.res == \success
+              $scope.ddislike = Number($scope.ddislike) + 1
+            else if v.res == \voted
+              alert('您已評比過！')
+        )
+      else
+        FB.login((res) ->
+          console.log(res)
+          if(res.authResponse)
+            FB.api('/me'
+              (response) !->
+                console.log(response)
+                fb_uid = response.id
+                fb_name = response.name
+                fb_email = response.email
+
+                $rootScope.$apply( !->
+                  $localStorage.name = response.name
+                  $rootScope.name = response.name
+                  $rootScope.login = true
+                  $rootScope.first_name = response.first_name
+                  $rootScope.last_name = response.last_name
+                )
+                $location.path('/')
+                const data = {
+                  fb_name:response.name
+                  thirdId:fb_uid
+                  email:fb_email
+                  thirdparty_type:'fb'
+                }
+                $http.post('http://api.dont-throw.com/member/add',data)
+              scope : 'email,publish_actions'
+            )
+          false
+        )
+    $scope.highlight = ->
+      alert('尚未完成XD!')
     $scope.addfunny = (c)->
       _i = new Date()
       switch(c)

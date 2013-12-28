@@ -49,6 +49,7 @@
     $http.defaults.useXDomain = true;
     $scope.scale = ['section--video-list__item--left', 'section--video-list__item--middle', 'section--video-list__item--right'];
     $scope.idata = idata.data.data;
+    console.log($scope.idata);
     $scope.urldata = [];
     $rootScope.snumber = [];
     $rootScope.number = [];
@@ -88,8 +89,8 @@
         }
       });
     };
-    $scope.goinfo = function(id){
-      return $location.path('/detail/' + id);
+    $scope.goinfo = function(){
+      return $location.path('/detail/' + $scope.result[0].id);
     };
     $scope.update = function(){
       if ($rootScope.fbid) {
@@ -146,18 +147,54 @@
     $scope.small3 = [];
     $scope.dislikeit = function(){
       var votedata;
-      votedata = {
-        tk: $rootScope.tk,
-        id: $stateParams.id,
-        userid: $rootScope.fbid
-      };
-      return $http.post('http://api.dont-throw.com/data/dislike', votedata).success(function(v){
-        if (v.res === 'success') {
-          return $scope.ddislike = Number($scope.ddislike) + 1;
-        } else if (v.res === 'voted') {
-          return alert('您已評比過！');
-        }
-      });
+      if ($rootScope.fbid) {
+        votedata = {
+          tk: $rootScope.tk,
+          id: $stateParams.id,
+          userid: $rootScope.fbid
+        };
+        return $http.post('http://api.dont-throw.com/data/dislike', votedata).success(function(v){
+          if (v.res === 'success') {
+            return $scope.ddislike = Number($scope.ddislike) + 1;
+          } else if (v.res === 'voted') {
+            return alert('您已評比過！');
+          }
+        });
+      } else {
+        return FB.login(function(res){
+          console.log(res);
+          if (res.authResponse) {
+            FB.api('/me', function(response){
+              var fb_uid, fb_name, fb_email, data;
+              console.log(response);
+              fb_uid = response.id;
+              fb_name = response.name;
+              fb_email = response.email;
+              $rootScope.$apply(function(){
+                $localStorage.name = response.name;
+                $rootScope.name = response.name;
+                $rootScope.login = true;
+                $rootScope.first_name = response.first_name;
+                $rootScope.last_name = response.last_name;
+              });
+              $location.path('/');
+              data = {
+                fb_name: response.name,
+                thirdId: fb_uid,
+                email: fb_email,
+                thirdparty_type: 'fb'
+              };
+              $http.post('http://api.dont-throw.com/member/add', data);
+            }, {
+              scope: 'email,publish_actions'
+            });
+          }
+          return false;
+        });
+      }
+    };
+    $scope.highlight = function(){
+      return alert('尚未完成XD!');
     };
     $scope.addfunny = function(c){
       var _i;

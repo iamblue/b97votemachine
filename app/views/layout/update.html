@@ -14,7 +14,7 @@
 		<div class="section--update__input__div">
 			<input type="text" name="search" class="section--update__form__input" placeholder="請輸入檢舉之Youtube影片" ng-model="url" value="{{url}}" ng-change="checkurl()" ng-mouseleave="gosearchid()" class="section--search__form__input"/>
 			<input type="submit" name="url" value="檢舉" id="submit" class="section--update__form__submit-btn" ng-click="search()"/>
-			<div class="section--update__input__check active">已轉成 Youtube ID</div>
+			<div class="section--update__input__check" ng-class="change ? 'active':''">已轉成 Youtube ID</div>
 		</div>
 	</div>
 	<div class="section--update__container__info" ng-class="change ? 'active':''">
@@ -43,3 +43,6 @@
 		</ul>
 	</div>
 </section>
+<div class="page-footer">
+	<p>BadDriver (c) 2013</p>
+</div>
