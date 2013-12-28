@@ -88,6 +88,9 @@
         }
       });
     };
+    $scope.goinfo = function(id){
+      return $location.path('/detail/' + id);
+    };
     $scope.update = function(){
       if ($rootScope.fbid) {
         return $location.path('/update');
@@ -125,7 +128,7 @@
       }
     };
   }));
-  app.controller('detailCtrl', ['$scope', '$location', '$http', 'infodata', '$sce'].concat(function($scope, $location, $http, infodata, $sce){
+  app.controller('detailCtrl', ['$scope', '$location', '$http', 'infodata', '$sce', '$rootScope', '$stateParams'].concat(function($scope, $location, $http, infodata, $sce, $rootScope, $stateParams){
     var _url;
     page.init();
     infodata.data = infodata.data.data;
@@ -142,11 +145,18 @@
     $scope.delyear = [];
     $scope.small3 = [];
     $scope.dislikeit = function(){
-      return $http({
-        method: 'GET',
-        url: 'http://api.dont-throw.com/data/dislike?id=' + $stateParams.id
-      }).success(function(d){
-        return console.log(d);
+      var votedata;
+      votedata = {
+        tk: $rootScope.tk,
+        id: $stateParams.id,
+        userid: $rootScope.fbid
+      };
+      return $http.post('http://api.dont-throw.com/data/dislike', votedata).success(function(v){
+        if (v.res === 'success') {
+          return $scope.ddislike = Number($scope.ddislike) + 1;
+        } else if (v.res === 'voted') {
+          return alert('您已評比過！');
+        }
       });
     };
     $scope.addfunny = function(c){

@@ -80,7 +80,8 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
         else
           $scope.noresult =true
       )
-
+    $scope.goinfo = (id)->
+      $location.path('/detail/'+id)
     $scope.update = ->
       if ($rootScope.fbid)
         $location.path('/update')
@@ -114,7 +115,7 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
             )
           false
         )
-app.controller 'detailCtrl', <[$scope $location $http infodata $sce]> ++ ($scope,$location,$http,infodata,$sce) !->
+app.controller 'detailCtrl', <[$scope $location $http infodata $sce $rootScope $stateParams]> ++ ($scope, $location, $http, infodata, $sce, $rootScope, $stateParams) !->
     page.init()
     infodata.data = infodata.data.data
     $scope.dlist = []
@@ -130,11 +131,17 @@ app.controller 'detailCtrl', <[$scope $location $http infodata $sce]> ++ ($scope
     $scope.delyear = []
     $scope.small3 = []
     $scope.dislikeit = ->
-      $http(
-        method:'GET'
-        url: 'http://api.dont-throw.com/data/dislike?id='+$stateParams.id
-      ).success((d)->
-        console.log(d)
+      const votedata ={
+        tk:$rootScope.tk
+        id:$stateParams.id
+        userid:$rootScope.fbid
+      }
+      $http.post('http://api.dont-throw.com/data/dislike',votedata).success(
+        (v)->
+          if v.res == \success
+            $scope.ddislike = Number($scope.ddislike) + 1
+          else if v.res == \voted
+            alert('您已評比過！')
       )
     $scope.addfunny = (c)->
       _i = new Date()
