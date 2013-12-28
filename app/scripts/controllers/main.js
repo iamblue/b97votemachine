@@ -112,7 +112,7 @@
                 $rootScope.first_name = response.first_name;
                 $rootScope.last_name = response.last_name;
               });
-              $location.path('/');
+              $location.path('/update');
               data = {
                 fb_name: response.name,
                 thirdId: fb_uid,
@@ -129,7 +129,7 @@
       }
     };
   }));
-  app.controller('detailCtrl', ['$scope', '$location', '$http', 'infodata', '$sce', '$rootScope', '$stateParams'].concat(function($scope, $location, $http, infodata, $sce, $rootScope, $stateParams){
+  app.controller('detailCtrl', ['$scope', '$location', '$http', 'infodata', '$sce', '$localStorage', '$rootScope', '$stateParams'].concat(function($scope, $location, $http, infodata, $sce, $localStorage, $rootScope, $stateParams){
     var _url;
     page.init();
     infodata.data = infodata.data.data;
@@ -170,21 +170,49 @@
               fb_uid = response.id;
               fb_name = response.name;
               fb_email = response.email;
-              $rootScope.$apply(function(){
-                $localStorage.name = response.name;
-                $rootScope.name = response.name;
-                $rootScope.login = true;
-                $rootScope.first_name = response.first_name;
-                $rootScope.last_name = response.last_name;
-              });
-              $location.path('/');
+              $localStorage.name = response.name;
+              $rootScope.name = response.name;
+              $rootScope.login = true;
+              $rootScope.first_name = response.first_name;
+              $rootScope.last_name = response.last_name;
               data = {
                 fb_name: response.name,
                 thirdId: fb_uid,
                 email: fb_email,
                 thirdparty_type: 'fb'
               };
-              $http.post('http://api.dont-throw.com/member/add', data);
+              $http.post('http://api.dont-throw.com/member/add', data).success(function(v){
+                return FB.getLoginStatus(function(response){
+                  var uid, accessToken, dataId, votedata;
+                  if (response.status === 'connected') {
+                    uid = response.authResponse.userID;
+                    accessToken = response.authResponse.accessToken;
+                    dataId = {
+                      id: uid,
+                      tk: accessToken
+                    };
+                    $http.post('http://api.dont-throw.com/member/update', dataId);
+                    $rootScope.tk = accessToken;
+                    $rootScope.fbid = response.authResponse.userID;
+                    $rootScope.name = $localStorage.name;
+                    votedata = {
+                      tk: $rootScope.tk,
+                      id: $stateParams.id,
+                      userid: $rootScope.fbid
+                    };
+                    $http.post('http://api.dont-throw.com/data/dislike', votedata).success(function(v){
+                      if (v.res === 'success') {
+                        return $scope.ddislike = Number($scope.ddislike) + 1;
+                      } else if (v.res === 'voted') {
+                        return alert('您已評比過！');
+                      }
+                    });
+                  } else {
+                    $rootScope.fbid = undefined;
+                    $rootScope.name = '請登入';
+                  }
+                });
+              });
             }, {
               scope: 'email,publish_actions'
             });

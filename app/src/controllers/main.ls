@@ -105,7 +105,7 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
                   $rootScope.first_name = response.first_name
                   $rootScope.last_name = response.last_name
                 )
-                $location.path('/')
+                $location.path('/update')
                 const data = {
                   fb_name:response.name
                   thirdId:fb_uid
@@ -117,7 +117,7 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
             )
           false
         )
-app.controller 'detailCtrl', <[$scope $location $http infodata $sce $rootScope $stateParams]> ++ ($scope, $location, $http, infodata, $sce, $rootScope, $stateParams) !->
+app.controller 'detailCtrl', <[$scope $location $http infodata $sce $localStorage $rootScope $stateParams]> ++ ($scope, $location, $http, infodata, $sce, $localStorage, $rootScope, $stateParams) !->
     page.init()
     infodata.data = infodata.data.data
     $scope.dlist = []
@@ -157,21 +157,52 @@ app.controller 'detailCtrl', <[$scope $location $http infodata $sce $rootScope $
                 fb_name = response.name
                 fb_email = response.email
 
-                $rootScope.$apply( !->
-                  $localStorage.name = response.name
-                  $rootScope.name = response.name
-                  $rootScope.login = true
-                  $rootScope.first_name = response.first_name
-                  $rootScope.last_name = response.last_name
-                )
-                $location.path('/')
+                $localStorage.name = response.name
+                $rootScope.name = response.name
+                $rootScope.login = true
+                $rootScope.first_name = response.first_name
+                $rootScope.last_name = response.last_name
+              
                 const data = {
                   fb_name:response.name
                   thirdId:fb_uid
                   email:fb_email
                   thirdparty_type:'fb'
                 }
-                $http.post('http://api.dont-throw.com/member/add',data)
+                $http.post('http://api.dont-throw.com/member/add',data).success(
+                  (v)->
+                    FB.getLoginStatus((response) !->
+                      if (response.status == 'connected')
+                        uid = response.authResponse.userID
+                        accessToken = response.authResponse.accessToken
+                        const dataId ={
+                          id:uid
+                          tk:accessToken
+                        }
+                        $http.post 'http://api.dont-throw.com/member/update', dataId
+                
+                        $rootScope.tk = accessToken
+                        $rootScope.fbid = response.authResponse.userID
+                        $rootScope.name = $localStorage.name
+                      
+                        const votedata ={
+                          tk:$rootScope.tk
+                          id:$stateParams.id
+                          userid:$rootScope.fbid
+                        }
+                        $http.post('http://api.dont-throw.com/data/dislike',votedata).success(
+                          (v)->
+                            if v.res == \success
+                              $scope.ddislike = Number($scope.ddislike) + 1
+                            else if v.res == \voted
+                              alert('您已評比過！')
+                        )
+                      else
+                        $rootScope.fbid = undefined
+                        $rootScope.name = '請登入'
+                        
+                    )
+                )
               scope : 'email,publish_actions'
             )
           false
