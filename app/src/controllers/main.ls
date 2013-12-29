@@ -71,7 +71,7 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
       $scope.clicksearch = true
       $http(
         method: 'GET'
-        url: 'http://api.dont-throw.com/data/search?number='+$scope.carnumber
+        url: 'http://127.0.0.1:3001/data/search?number='+$scope.carnumber
       ).success((d)!->
         $scope.resaultnum = d.data.length 
         $scope.result = d.data
@@ -113,7 +113,7 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
                   email:fb_email
                   thirdparty_type:'fb'
                 }
-                $http.post('http://api.dont-throw.com/member/add',data)
+                $http.post('http://127.0.0.1:3001/member/add',data)
               scope : 'email,publish_actions'
             )
           false
@@ -142,7 +142,7 @@ app.controller 'detailCtrl', <[$scope $location $http infodata $sce $localStorag
         id:$stateParams.id
         userid:$rootScope.fbid
         }
-        $http.post('http://api.dont-throw.com/data/dislike',votedata).success(
+        $http.post('http://127.0.0.1:3001/data/dislike',votedata).success(
           (v)->
             if v.res == \success
               $scope.ddislike = Number($scope.ddislike) + 1
@@ -172,7 +172,7 @@ app.controller 'detailCtrl', <[$scope $location $http infodata $sce $localStorag
                   email:fb_email
                   thirdparty_type:'fb'
                 }
-                $http.post('http://api.dont-throw.com/member/add',data).success(
+                $http.post('http://127.0.0.1:3001/member/add',data).success(
                   (v)->
                     FB.getLoginStatus((response) !->
                       if (response.status == 'connected')
@@ -182,7 +182,7 @@ app.controller 'detailCtrl', <[$scope $location $http infodata $sce $localStorag
                           id:uid
                           tk:accessToken
                         }
-                        $http.post 'http://api.dont-throw.com/member/update', dataId
+                        $http.post 'http://127.0.0.1:3001/member/update', dataId
                 
                         $rootScope.tk = accessToken
                         $rootScope.fbid = response.authResponse.userID
@@ -193,7 +193,7 @@ app.controller 'detailCtrl', <[$scope $location $http infodata $sce $localStorag
                           id:$stateParams.id
                           userid:$rootScope.fbid
                         }
-                        $http.post('http://api.dont-throw.com/data/dislike',votedata).success(
+                        $http.post('http://127.0.0.1:3001/data/dislike',votedata).success(
                           (v)->
                             if v.res == \success
                               $scope.ddislike = Number($scope.ddislike) + 1
@@ -257,7 +257,7 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce $fileUploa
             imgpool:_picpool
             fbid:$rootScope.fbid
           }
-          $http.post('http://api.dont-throw.com/data/add',data).success((v)->
+          $http.post('http://127.0.0.1:3001/data/add',data).success((v)->
             if(v.res == 'success')
               alert('感謝您，已貼文成功！')
               $location.path('/')
@@ -289,7 +289,7 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce $fileUploa
     $scope.gosearchid = ->
       $http(
         method: 'GET'
-        url: 'http://api.dont-throw.com/data/youtube?id='+$scope.url
+        url: 'http://127.0.0.1:3001/data/youtube?id='+$scope.url
       ).success((d)!->
         if(d.res == 'success')
           $scope.description = d.data.description
@@ -298,7 +298,7 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce $fileUploa
     $scope.u = false
     uploader = $fileUploader.create(
       scope: $scope                      
-      url: 'http://api.dont-throw.com/data/upload/img'
+      url: 'http://127.0.0.1:3001/data/upload/img'
       filters: [
         (item) ->  
           console.log( 'filter1' )
