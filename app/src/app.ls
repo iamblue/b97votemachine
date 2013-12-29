@@ -9,8 +9,8 @@ app = window.app = angular.module 'BadDriverApp', [
   'files'
 ]
 
-app.config ($stateProvider, $urlRouterProvider) !->
-
+app.config ($stateProvider, $urlRouterProvider, $httpProvider) !->
+  delete $httpProvider.defaults.headers.common['X-Requested-With']
   fbAppId = '1422387521330282'
   FB.init(
     appId      : fbAppId

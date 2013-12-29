@@ -2,8 +2,9 @@
   'use strict';
   var app;
   app = window.app = angular.module('BadDriverApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router', 'ngStorage', 'files']);
-  app.config(function($stateProvider, $urlRouterProvider){
+  app.config(function($stateProvider, $urlRouterProvider, $httpProvider){
     var fbAppId;
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
     fbAppId = '1422387521330282';
     FB.init({
       appId: fbAppId,
