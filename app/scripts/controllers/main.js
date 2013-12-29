@@ -281,7 +281,7 @@
             imgpool: _picpool,
             fbid: $rootScope.fbid
           };
-          return $http.post('http://127.0.0.1:3001/data/add', data).success(function(v){
+          return $http.post('http://api.dont-throw.com/data/add', data).success(function(v){
             if (v.res === 'success') {
               alert('感謝您，已貼文成功！');
               return $location.path('/');
@@ -334,7 +334,7 @@
     $scope.u = false;
     uploader = $fileUploader.create({
       scope: $scope,
-      url: 'http://127.0.0.1:3001/data/upload/img',
+      url: 'http://api.dont-throw.com/data/upload/img',
       filters: [function(item){
         console.log('filter1');
         return true;

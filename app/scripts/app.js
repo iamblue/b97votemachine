@@ -18,7 +18,7 @@
         idata: function($http){
           return $http({
             method: 'GET',
-            url: 'http://127.0.0.1:3001/data/last'
+            url: 'http://api.dont-throw.com/data/last'
           });
         }
       },
@@ -34,7 +34,7 @@
         infodata: function($http, $stateParams, $location){
           return $http({
             method: 'GET',
-            url: 'http://127.0.0.1:3001/data/get/' + $stateParams.id
+            url: 'http://api.dont-throw.com/data/get/' + $stateParams.id
           }).success(function(d){
             if (d.data === null) {
               alert('很抱歉找不到此資料！');
