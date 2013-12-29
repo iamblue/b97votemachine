@@ -1,48 +1,101 @@
 <section class="section section--search">
-	<div class="section--search__background"></div>
-	<div class="section--update__container" ng-class="change ? 'active':''">
-		<div class="section--update__div">
-			<ul class="numlistpool"> 
-				<li class="numlist" ng-repeat=" o in nlist">{{o}}</li>
-			</ul>
-			<div class="section--update__inputnum" ng-show="wantaddnumber">
-				<input type="text" class="section--update__form__sub__input addnumber" placeholder="新增車號" ng-model="inputnum" value="{{inputnum}}"/><a class="section--update__addnumber" ng-click="addnum()">新增</a>
-			</div>
-			<a class="section--update__addnumber" ng-click="addnewbtn()" ng-show="change" ng-hide="fullnum">請輸入車號</a>
-			<iframe width="100%" height="300" src="{{urldata}}" frameborder="0" allowfullscreen></iframe>
-		</div>
-		<div class="section--update__input__div">
-			<input type="text" name="search" class="section--update__form__input" placeholder="請輸入檢舉之Youtube影片" ng-model="url" value="{{url}}" ng-change="checkurl()" ng-mouseleave="gosearchid()" class="section--search__form__input"/>
-			<input type="submit" name="url" value="檢舉" id="submit" class="section--update__form__submit-btn" ng-click="search()"/>
-			<div class="section--update__input__check" ng-class="change ? 'active':''">已轉成 Youtube ID</div>
-		</div>
-	</div>
-	<div class="section--update__container__info" ng-class="change ? 'active':''">
-		<ul>
-			<li>
-				<span class="title">City</span>
-			</li>
-			<li>
-				<input type="text" name="city" class="section--update__form__sub__input" placeholder="請輸入所在城市，若不確定寫未知" ng-model="city" value="{{city}}"/>
-			</li>
-			<li>
-				<span class="title">Location</span>
-			</li>
-			<li>
-				<input type="text" name="location" class="section--update__form__sub__input" placeholder="請輸入地點之詳細，若不確定寫未知" ng-model="location" value="{{location}}"/>
-			</li>
-			<li>
-				<span class="title">Description</span>
-			</li>
-			<li>
-				<textarea class="section--update__form__sub__textarea" cols="40" rows="10" ng-model="description" value="{{description}}"></textarea>
-			</li>
-			<li>
-				<a class="section--update__report-btn" ng-click="send()">送出</a>
-			</li>
-		</ul>
-	</div>
+  <div class="section--search__background"></div>
+  <div class="section--update__container" ng-class="change ? 'active':''">
+    <div class="section--update__div">
+      <ul class="numlistpool"> 
+        <li class="numlist" ng-repeat=" o in nlist">{{o}}</li>
+      </ul>
+      <div class="updatechoose" ng-hide="img || u">
+        <!-- <p class="hint">請選擇上傳項目</p> -->
+        <ul>
+          <li ng-click="img = !img"><a class="upimg"></a></li>
+          <li ng-click="u = !u"><a class="upU"></a></li>
+        </ul>
+      </div>
+      <div class="showpic" ng-show="picPool.length != 0">
+        <ul class="smallpic">
+          <li ng-repeat="p in picPool">
+            <img src="https://s3-us-west-2.amazonaws.com/baddriver/{{p.u}}" ng-click="changepic($index)"/>
+          </li>
+        </ul>  
+        <img src="https://s3-us-west-2.amazonaws.com/baddriver/{{mainpic}}"/>
+      </div>
+      <div class="updateimg" ng-show="img">
+          <ul>
+              <li ng-repeat="item in uploader.queue" class="showupdateimg">
+                  <div>{{ item.file.name }}</div>
+                  <!-- <div>Size: {{ item.file.size }}</div> -->
+                  <!-- <div>
+                      Progress: {{ item.progress }}
+                      <div class="item-progress-box">
+                          <div class="item-progress" ng-style="{ 'width': item.progress + '%' }"></div>
+                      </div>
+                  </div> -->
+                  <!-- <div>Uploaded: {{ item.isUploaded }}</div> -->
+                  <div>
+                      <!-- <a href="" ng-click="item.upload()" ng-hide="item.isUploaded" >upload</a> -->
+                      <a href="" class="delimg" ng-click="item.remove()">x</a>
+                  </div>
+              </li>
+          </ul>
+          <div ng-show="uploader.queue.length">
+              <!-- <div> -->
+                  <!-- Total progress: {{ uploader.progress }} -->
+                  <div class="total-progress-box">
+                      <div class="total-progress" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                  </div>
+              <!-- </div> -->
+              <!-- <a href="" ng-click="uploader.clearQueue()">delete all</a> -->
+          </div>
+          <!-- <p>目前上傳相片數量: {{ uploader.queue.length }}</p> -->
+        </div>
+      <div class="section--update__inputnum" ng-show="wantaddnumber">
+        <input type="text" class="section--update__form__sub__input addnumber" placeholder="新增車號" ng-model="inputnum" value="{{inputnum}}"/><a class="section--update__addnumber" ng-click="addnum()">新增</a>
+      </div>
+      <a class="section--update__addnumber" ng-click="addnewbtn()" ng-show="change" ng-hide="fullnum">請輸入車號</a>
+      <iframe width="100%" height="300" src="{{urldata}}" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="section--update__input__div">
+      <div class="uploadfile" ng-show="img">
+        <p>選擇圖片</p>
+        <input type="file" accept="image/*" ng-file-select/>
+      </div>
+      <a class="uploadfile_contain" ng-show="img" href="" ng-click="uploader.uploadAll()" ng-show="uploader.getNotUploadedItems().length">
+        上傳
+      </a>
+      <div ng-show="u">
+      <input type="text" ng-hide="img" name="search" class="section--update__form__input" placeholder="請輸入檢舉之Youtube影片" ng-model="url" value="{{url}}" ng-change="checkurl()" ng-mouseleave="gosearchid()" class="section--search__form__input"/>
+      <input type="submit" ng-hide="img" name="url" value="檢舉" id="submit" class="section--update__form__submit-btn" ng-click="search()"/>
+      <div class="section--update__input__check" ng-hide="img" ng-class="change ? 'active':''">已轉成 Youtube ID</div>
+      </div>
+    </div>
+  </div>
+  <div class="section--update__container__info" ng-class="change ? 'active':''">
+    <ul>
+      <li>
+        <span class="title">City</span>
+      </li>
+      <li>
+        <input type="text" name="city" class="section--update__form__sub__input" placeholder="請輸入所在城市，若不確定寫未知" ng-model="city" value="{{city}}"/>
+      </li>
+      <li>
+        <span class="title">Location</span>
+      </li>
+      <li>
+        <input type="text" name="location" class="section--update__form__sub__input" placeholder="請輸入地點之詳細，若不確定寫未知" ng-model="location" value="{{location}}"/>
+      </li>
+      <li>
+        <span class="title">Description</span>
+      </li>
+      <li>
+        <textarea class="section--update__form__sub__textarea" cols="40" rows="10" ng-model="description" value="{{description}}"></textarea>
+      </li>
+      <li>
+        <a class="section--update__report-btn" ng-click="send()">送出</a>
+      </li>
+    </ul>
+  </div>
 </section>
 <div class="page-footer">
-	<p>BadDriver (c) 2013</p>
+  <p>BadDriver (c) 2013</p>
 </div>

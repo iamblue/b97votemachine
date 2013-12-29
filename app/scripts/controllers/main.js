@@ -61,7 +61,8 @@
       _tmp[3] = '_';
       _s = _tmp.join().replace(/\,/g, '');
       $rootScope.snumber.push(_s);
-      return $scope.urldata.push('//www.youtube.com/embed/' + v.urlid);
+      $scope.urldata.push('//www.youtube.com/embed/' + v.urlid);
+      return v.imgpool = JSON.parse(v.imgpool);
     });
     $scope.urldata[0] = $sce.trustAsResourceUrl($scope.urldata[0]);
     $scope.urldata[1] = $sce.trustAsResourceUrl($scope.urldata[1]);
@@ -140,6 +141,8 @@
     $scope.dlike = infodata.data.like;
     $scope.ddislike = infodata.data.dislike;
     $scope.ddesp = infodata.data.description;
+    $scope.dfrom = infodata.data.from;
+    $scope.dimgpool = JSON.parse(infodata.data.imgpool);
     _url = '//www.youtube.com/embed/' + infodata.data.urlid;
     $scope.durldata = $sce.trustAsResourceUrl(_url);
     $scope.boat = [];
@@ -240,7 +243,8 @@
       }
     };
   }));
-  app.controller('updateCtrl', ['$scope', '$location', '$http', '$rootScope', '$sce'].concat(function($scope, $location, $http, $rootScope, $sce){
+  app.controller('updateCtrl', ['$scope', '$location', '$http', '$rootScope', '$sce', '$fileUploader'].concat(function($scope, $location, $http, $rootScope, $sce, $fileUploader){
+    var uploader;
     page.init();
     $http.defaults.useXDomain = true;
     $scope.nlist = [];
@@ -252,27 +256,40 @@
       }
     };
     $scope.send = function(){
-      var _num, data;
-      if ($scope.nlist.length !== 0 && $scope.location && $scope.description && $scope.city && $scope.url) {
+      var _num, _picpool, data;
+      if ($scope.nlist.length !== 0 && $scope.location && $scope.description && $scope.city) {
         _num = $scope.nlist[0].toString().replace(/\s/g, '').replace(/\-/g, '').toUpperCase();
-        data = {
-          id: $rootScope.fbid,
-          tk: $rootScope.tk,
-          urlid: $scope.url,
-          number: _num,
-          city: $scope.city,
-          location: $scope.location,
-          description: $scope.description,
-          fbid: $rootScope.fbid
-        };
-        return $http.post('http://api.dont-throw.com/data/add', data).success(function(v){
-          if (v.res === 'success') {
-            alert('感謝您，已貼文成功！');
-            return $location.path('/');
+        if ($scope.img && $scope.picPool.length === 0) {
+          return alert('請先按上傳圖片！');
+        } else {
+          if ($scope.img) {
+            $scope.url = 'none';
+            _picpool = JSON.stringify($scope.picPool);
           } else {
-            return alert('Oops! 再試一次');
+            if ($scope.url) {
+              alert('網址不可為空');
+            }
           }
-        });
+          data = {
+            id: $rootScope.fbid,
+            tk: $rootScope.tk,
+            urlid: $scope.url,
+            number: _num,
+            city: $scope.city,
+            location: $scope.location,
+            description: $scope.description,
+            imgpool: _picpool,
+            fbid: $rootScope.fbid
+          };
+          return $http.post('http://127.0.0.1:3001/data/add', data).success(function(v){
+            if (v.res === 'success') {
+              alert('感謝您，已貼文成功！');
+              return $location.path('/');
+            } else {
+              return alert('Oops! 再試一次');
+            }
+          });
+        }
       } else {
         if ($scope.nlist.length === 0) {
           alert('車牌號碼不可為空');
@@ -284,10 +301,7 @@
           alert('城市不可為空');
         }
         if (!$scope.description) {
-          alert('描述不可為空');
-        }
-        if (!$scope.url) {
-          return alert('網址不可為空');
+          return alert('描述不可為空');
         }
       }
     };
@@ -307,7 +321,7 @@
       return $scope.urldata = $sce.trustAsResourceUrl(_url);
     };
     $scope.gosearchid = function(){
-      $http({
+      return $http({
         method: 'GET',
         url: 'http://api.dont-throw.com/data/youtube?id=' + $scope.url
       }).success(function(d){
@@ -315,8 +329,52 @@
           $scope.description = d.data.description;
         }
       });
-      return console.log('123');
     };
+    $scope.img = false;
+    $scope.u = false;
+    uploader = $fileUploader.create({
+      scope: $scope,
+      url: 'http://127.0.0.1:3001/data/upload/img',
+      filters: [function(item){
+        console.log('filter1');
+        return true;
+      }]
+    });
+    uploader.filters.push(function(item){
+      console.log('filter2');
+      return true;
+    });
+    $scope.picPool = [];
+    $scope.changepic = function($index){
+      console.log($index);
+      return $scope.mainpic = $scope.picPool[$index].u;
+    };
+    uploader.bind('complete', function(event, xhr, item){
+      var _x, _ym;
+      _x = angular.fromJson(xhr.response);
+      $scope.change = true;
+      $scope.picPool.push({
+        u: _x.n,
+        m: 0
+      });
+      $scope.oi = false;
+      $scope.mainpic = $scope.picPool[0].u;
+      console.log($scope.picPool[0]);
+      _ym = 0;
+      angular.forEach($scope.picPool, function(v, i){
+        var _ym;
+        if (v.m === 1) {
+          return _ym = 1;
+        }
+      });
+      if (_ym === 0) {
+        return $scope.picPool[0].m = 1;
+      }
+    });
+    uploader.bind('completeall', function(event, items){
+      $scope.oi = false;
+    });
+    $scope.uploader = uploader;
   }));
   app.directive('cheatCode', cheatcodeDirective);
 }).call(this);

@@ -54,12 +54,13 @@ app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http id
       _s = _tmp.join().replace /\,/g,''
       $rootScope.snumber.push _s
       $scope.urldata.push '//www.youtube.com/embed/'+v.urlid
+      v.imgpool = JSON.parse(v.imgpool)
     )
 
     $scope.urldata[0] = $sce.trustAsResourceUrl $scope.urldata[0]
     $scope.urldata[1] = $sce.trustAsResourceUrl $scope.urldata[1]
     $scope.urldata[2] = $sce.trustAsResourceUrl $scope.urldata[2]
-
+    # console.log(idata.data.data)
     $scope.urldata.push idata.data.data.urlid 
     page.init()
     $http.defaults.useXDomain = true
@@ -127,6 +128,8 @@ app.controller 'detailCtrl', <[$scope $location $http infodata $sce $localStorag
     $scope.dlike = infodata.data.like
     $scope.ddislike = infodata.data.dislike
     $scope.ddesp = infodata.data.description
+    $scope.dfrom = infodata.data.from
+    $scope.dimgpool = JSON.parse infodata.data.imgpool
     _url = '//www.youtube.com/embed/'+infodata.data.urlid
     $scope.durldata = $sce.trustAsResourceUrl _url
     $scope.boat= []
@@ -222,7 +225,7 @@ app.controller 'detailCtrl', <[$scope $location $http infodata $sce $localStorag
         $scope.small3.push(_i)
         break
 
-app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce]> ++ ($scope, $location, $http, $rootScope, $sce) !->
+app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce $fileUploader]> ++ ($scope, $location, $http, $rootScope, $sce, $fileUploader) !->
     page.init()
     $http.defaults.useXDomain = true
     $scope.nlist = []
@@ -232,26 +235,35 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce]> ++ ($sco
         $scope.wantaddnumber = false
         $scope.fullnum = true 
     $scope.send= ->
-      if($scope.nlist.length!= 0 && $scope.location && $scope.description && $scope.city && $scope.url )
+      if($scope.nlist.length!= 0 && $scope.location && $scope.description && $scope.city )
         _num = $scope.nlist[0].toString().replace(/\s/g,'').replace(/\-/g,'').toUpperCase()
-        
-        const data = {
-          id: $rootScope.fbid
-          tk: $rootScope.tk
-          urlid: $scope.url
-          number: _num
-          city: $scope.city
-          location: $scope.location
-          description: $scope.description
-          fbid:$rootScope.fbid
-        }
-        $http.post('http://api.dont-throw.com/data/add',data).success((v)->
-          if(v.res == 'success')
-            alert('感謝您，已貼文成功！')
-            $location.path('/')
+        if($scope.img && $scope.picPool.length == 0)
+          alert('請先按上傳圖片！')
+        else     
+          if($scope.img)  
+            $scope.url = 'none'
+            _picpool = JSON.stringify($scope.picPool)
           else
-            alert('Oops! 再試一次')
-        )
+            if($scope.url)
+              alert('網址不可為空')
+          const data = {
+            id: $rootScope.fbid
+            tk: $rootScope.tk
+            urlid: $scope.url
+            number: _num
+            city: $scope.city
+            location: $scope.location
+            description: $scope.description
+            imgpool:_picpool
+            fbid:$rootScope.fbid
+          }
+          $http.post('http://api.dont-throw.com/data/add',data).success((v)->
+            if(v.res == 'success')
+              alert('感謝您，已貼文成功！')
+              $location.path('/')
+            else
+              alert('Oops! 再試一次')
+          )
       else
         if($scope.nlist.length == 0)
           alert('車牌號碼不可為空')
@@ -261,8 +273,6 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce]> ++ ($sco
           alert('城市不可為空')
         if(!$scope.description)
           alert('描述不可為空')
-        if(!$scope.url)
-          alert('網址不可為空')
         
     $scope.addnewbtn = ->
       $scope.wantaddnumber = !$scope.wantaddnumber
@@ -284,5 +294,44 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce]> ++ ($sco
         if(d.res == 'success')
           $scope.description = d.data.description
       )
-      console.log \123
+    $scope.img = false
+    $scope.u = false
+    uploader = $fileUploader.create(
+      scope: $scope                      
+      url: 'http://api.dont-throw.com/data/upload/img'
+      filters: [
+        (item) ->  
+          console.log( 'filter1' )
+          true
+      ]
+    )
+    uploader.filters.push((item) ->  
+      console.log( 'filter2' )
+      true
+    )
+    $scope.picPool = []
+    $scope.changepic = ($index)->
+      console.log($index)
+      $scope.mainpic = $scope.picPool[$index].u
+    uploader.bind( 'complete', ( event, xhr, item)-> 
+      # console.log( 'Complete: ' + xhr.response )
+      
+      _x = angular.fromJson(xhr.response)
+      $scope.change = true
+      $scope.picPool.push({u:_x.n,m:0})
+      $scope.oi = false
+      $scope.mainpic = $scope.picPool[0].u
+      console.log($scope.picPool[0])
+      _ym = 0
+      angular.forEach($scope.picPool,(v,i)->
+        if v.m == 1 
+          _ym = 1
+      )
+      if _ym == 0
+        $scope.picPool[0].m = 1
+    )
+    uploader.bind('completeall',( event, items) !->
+      $scope.oi = false; 
+    )
+    $scope.uploader = uploader;
 app.directive 'cheatCode' cheatcodeDirective

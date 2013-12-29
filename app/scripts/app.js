@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   var app;
-  app = window.app = angular.module('BadDriverApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router', 'ngStorage']);
+  app = window.app = angular.module('BadDriverApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router', 'ngStorage', 'files']);
   app.config(function($stateProvider, $urlRouterProvider){
     var fbAppId;
     fbAppId = '1422387521330282';
@@ -18,7 +18,7 @@
         idata: function($http){
           return $http({
             method: 'GET',
-            url: 'http://api.dont-throw.com/data/last'
+            url: 'http://127.0.0.1:3001/data/last'
           });
         }
       },
@@ -34,7 +34,7 @@
         infodata: function($http, $stateParams, $location){
           return $http({
             method: 'GET',
-            url: 'http://api.dont-throw.com/data/get/' + $stateParams.id
+            url: 'http://127.0.0.1:3001/data/get/' + $stateParams.id
           }).success(function(d){
             if (d.data === null) {
               alert('很抱歉找不到此資料！');
