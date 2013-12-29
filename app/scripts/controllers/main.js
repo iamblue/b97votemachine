@@ -76,7 +76,7 @@
       $scope.clicksearch = true;
       return $http({
         method: 'GET',
-        url: 'http://api.dont-throw.com/data/search?number=' + $scope.carnumber
+        url: 'http://127.0.0.1:3001/data/search?number=' + $scope.carnumber
       }).success(function(d){
         var _url;
         $scope.resaultnum = d.data.length;
@@ -120,7 +120,7 @@
                 email: fb_email,
                 thirdparty_type: 'fb'
               };
-              $http.post('http://api.dont-throw.com/member/add', data);
+              $http.post('http://127.0.0.1:3001/member/add', data);
             }, {
               scope: 'email,publish_actions'
             });
@@ -156,7 +156,7 @@
           id: $stateParams.id,
           userid: $rootScope.fbid
         };
-        return $http.post('http://api.dont-throw.com/data/dislike', votedata).success(function(v){
+        return $http.post('http://127.0.0.1:3001/data/dislike', votedata).success(function(v){
           if (v.res === 'success') {
             return $scope.ddislike = Number($scope.ddislike) + 1;
           } else if (v.res === 'voted') {
@@ -184,7 +184,7 @@
                 email: fb_email,
                 thirdparty_type: 'fb'
               };
-              $http.post('http://api.dont-throw.com/member/add', data).success(function(v){
+              $http.post('http://127.0.0.1:3001/member/add', data).success(function(v){
                 return FB.getLoginStatus(function(response){
                   var uid, accessToken, dataId, votedata;
                   if (response.status === 'connected') {
@@ -194,7 +194,7 @@
                       id: uid,
                       tk: accessToken
                     };
-                    $http.post('http://api.dont-throw.com/member/update', dataId);
+                    $http.post('http://127.0.0.1:3001/member/update', dataId);
                     $rootScope.tk = accessToken;
                     $rootScope.fbid = response.authResponse.userID;
                     $rootScope.name = $localStorage.name;
@@ -203,7 +203,7 @@
                       id: $stateParams.id,
                       userid: $rootScope.fbid
                     };
-                    $http.post('http://api.dont-throw.com/data/dislike', votedata).success(function(v){
+                    $http.post('http://127.0.0.1:3001/data/dislike', votedata).success(function(v){
                       if (v.res === 'success') {
                         return $scope.ddislike = Number($scope.ddislike) + 1;
                       } else if (v.res === 'voted') {
@@ -281,7 +281,7 @@
             imgpool: _picpool,
             fbid: $rootScope.fbid
           };
-          return $http.post('http://api.dont-throw.com/data/add', data).success(function(v){
+          return $http.post('http://127.0.0.1:3001/data/add', data).success(function(v){
             if (v.res === 'success') {
               alert('感謝您，已貼文成功！');
               return $location.path('/');
@@ -323,7 +323,7 @@
     $scope.gosearchid = function(){
       return $http({
         method: 'GET',
-        url: 'http://api.dont-throw.com/data/youtube?id=' + $scope.url
+        url: 'http://127.0.0.1:3001/data/youtube?id=' + $scope.url
       }).success(function(d){
         if (d.res === 'success') {
           $scope.description = d.data.description;
@@ -334,7 +334,7 @@
     $scope.u = false;
     uploader = $fileUploader.create({
       scope: $scope,
-      url: 'http://api.dont-throw.com/data/upload/img',
+      url: 'http://127.0.0.1:3001/data/upload/img',
       filters: [function(item){
         console.log('filter1');
         return true;

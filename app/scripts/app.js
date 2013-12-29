@@ -18,7 +18,7 @@
         idata: function($http){
           return $http({
             method: 'GET',
-            url: 'http://api.dont-throw.com/data/last'
+            url: 'http://127.0.0.1:3001/data/last'
           });
         }
       },
@@ -34,7 +34,7 @@
         infodata: function($http, $stateParams, $location){
           return $http({
             method: 'GET',
-            url: 'http://api.dont-throw.com/data/get/' + $stateParams.id
+            url: 'http://127.0.0.1:3001/data/get/' + $stateParams.id
           }).success(function(d){
             if (d.data === null) {
               alert('很抱歉找不到此資料！');
@@ -71,7 +71,7 @@
           id: uid,
           tk: accessToken
         };
-        $http.post('http://api.dont-throw.com/member/update', dataId);
+        $http.post('http://127.0.0.1:3001/member/update', dataId);
         $rootScope.$apply(function(){
           $rootScope.tk = accessToken;
           $rootScope.fbid = response.authResponse.userID;

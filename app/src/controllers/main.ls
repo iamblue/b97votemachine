@@ -293,7 +293,7 @@ app.controller 'updateCtrl', <[$scope $location $http $rootScope $sce $fileUploa
       ).success((d)!->
         if(d.res == 'success')
           $scope.description = d.data.description
-      )
+      ) 
     $scope.img = false
     $scope.u = false
     uploader = $fileUploader.create(
