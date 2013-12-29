@@ -27,7 +27,7 @@ app.config ($stateProvider, $urlRouterProvider) !->
         idata: ($http)->
           $http(
             method: 'GET'
-            url: 'http://127.0.0.1:3001/data/last'
+            url: 'http://api.dont-throw.com/data/last'
           )
       }
       templateUrl: '/views/layout/index.html'
@@ -44,7 +44,7 @@ app.config ($stateProvider, $urlRouterProvider) !->
         infodata:($http,$stateParams,$location)->
           $http(
             method:'GET'
-            url: 'http://127.0.0.1:3001/data/get/'+$stateParams.id
+            url: 'http://api.dont-throw.com/data/get/'+$stateParams.id
           ).success((d)->
             if(d.data == null)
               alert('很抱歉找不到此資料！')
@@ -78,7 +78,7 @@ app.run <[$rootScope $location $localStorage $http]> ++ ($rootScope, $location, 
         id:uid
         tk:accessToken
       }
-      $http.post 'http://127.0.0.1:3001/member/update', dataId
+      $http.post 'http://api.dont-throw.com/member/update', dataId
       $rootScope.$apply( ->
         $rootScope.tk = accessToken
         $rootScope.fbid = response.authResponse.userID
