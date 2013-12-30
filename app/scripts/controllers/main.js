@@ -45,11 +45,48 @@
       }
     };
   };
-  app.controller('indexCtrl', ['$scope', '$location', '$rootScope', '$localStorage', '$http', 'idata', '$sce'].concat(function($scope, $location, $rootScope, $localStorage, $http, idata, $sce){
+  app.service('fb', ['$rootScope', '$localStorage', '$location', '$http'].concat(function($rootScope, $localStorage, $location, $http){
+    this.login = function(path){
+      if ($rootScope.fbid) {
+        return $location.path('/' + path);
+      } else {
+        return FB.login(function(res){
+          if (res.authResponse) {
+            FB.api('/me', function(response){
+              var fb_uid, fb_name, fb_email, data;
+              console.log(response);
+              fb_uid = response.id;
+              fb_name = response.name;
+              fb_email = response.email;
+              $rootScope.$apply(function(){
+                $localStorage.name = response.name;
+                $rootScope.name = response.name;
+                $rootScope.login = true;
+                $rootScope.first_name = response.first_name;
+                $rootScope.last_name = response.last_name;
+              });
+              data = {
+                fb_name: response.name,
+                thirdId: fb_uid,
+                email: fb_email,
+                thirdparty_type: 'fb'
+              };
+              $http.post('http://api.dont-throw.com/member/add', data).success(function(){
+                return $location.path('/' + path);
+              });
+            }, {
+              scope: 'email,publish_actions'
+            });
+          }
+          return false;
+        });
+      }
+    };
+  }));
+  app.controller('indexCtrl', ['$scope', '$location', '$rootScope', '$localStorage', '$http', 'idata', '$sce', 'fb'].concat(function($scope, $location, $rootScope, $localStorage, $http, idata, $sce, fb){
+    page.init();
     $http.defaults.useXDomain = true;
-    $scope.scale = ['section--video-list__item--left', 'section--video-list__item--middle', 'section--video-list__item--right'];
     $scope.idata = idata.data.data;
-    console.log($scope.idata);
     $scope.urldata = [];
     $rootScope.snumber = [];
     $rootScope.number = [];
@@ -68,8 +105,6 @@
     $scope.urldata[1] = $sce.trustAsResourceUrl($scope.urldata[1]);
     $scope.urldata[2] = $sce.trustAsResourceUrl($scope.urldata[2]);
     $scope.urldata.push(idata.data.data.urlid);
-    page.init();
-    $http.defaults.useXDomain = true;
     $scope.cCode = [];
     $scope.search = function(){
       $scope.resultdata = [];
@@ -94,43 +129,10 @@
       return $location.path('/detail/' + $scope.result[0].id);
     };
     $scope.update = function(){
-      if ($rootScope.fbid) {
-        return $location.path('/update');
-      } else {
-        return FB.login(function(res){
-          console.log(res);
-          if (res.authResponse) {
-            FB.api('/me', function(response){
-              var fb_uid, fb_name, fb_email, data;
-              console.log(response);
-              fb_uid = response.id;
-              fb_name = response.name;
-              fb_email = response.email;
-              $rootScope.$apply(function(){
-                $localStorage.name = response.name;
-                $rootScope.name = response.name;
-                $rootScope.login = true;
-                $rootScope.first_name = response.first_name;
-                $rootScope.last_name = response.last_name;
-              });
-              $location.path('/update');
-              data = {
-                fb_name: response.name,
-                thirdId: fb_uid,
-                email: fb_email,
-                thirdparty_type: 'fb'
-              };
-              $http.post('http://api.dont-throw.com/member/add', data);
-            }, {
-              scope: 'email,publish_actions'
-            });
-          }
-          return false;
-        });
-      }
+      return fb.login('update');
     };
   }));
-  app.controller('detailCtrl', ['$scope', '$location', '$http', 'infodata', '$sce', '$localStorage', '$rootScope', '$stateParams'].concat(function($scope, $location, $http, infodata, $sce, $localStorage, $rootScope, $stateParams){
+  app.controller('detailCtrl', ['$scope', '$location', '$http', 'infodata', '$sce', '$localStorage', '$rootScope', '$stateParams', 'fb'].concat(function($scope, $location, $http, infodata, $sce, $localStorage, $rootScope, $stateParams, fb){
     var _url;
     page.init();
     infodata.data = infodata.data.data;
@@ -148,6 +150,9 @@
     $scope.boat = [];
     $scope.delyear = [];
     $scope.small3 = [];
+    $scope.update = function(){
+      return fb.login('update');
+    };
     $scope.dislikeit = function(){
       var votedata;
       if ($rootScope.fbid) {

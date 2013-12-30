@@ -37,88 +37,91 @@ const cheatcodeDirective = ->
         )
     )
 
-app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http idata $sce]> ++ ($scope, $location, $rootScope, $localStorage, $http, idata, $sce) !->
-    $http.defaults.useXDomain = true
 
-    $scope.scale = ['section--video-list__item--left','section--video-list__item--middle','section--video-list__item--right']
-    $scope.idata = idata.data.data
-    console.log $scope.idata
-    $scope.urldata = []
-    $rootScope.snumber = []
-    $rootScope.number = []
-    angular.forEach(idata.data.data,(v,i,o)->
-      $rootScope.number.push v.number
-      _tmp = v.number.split ''
-      _tmp[2] = '_'
-      _tmp[3] = '_'
-      _s = _tmp.join().replace /\,/g,''
-      $rootScope.snumber.push _s
-      $scope.urldata.push '//www.youtube.com/embed/'+v.urlid
-      v.imgpool = JSON.parse(v.imgpool)
-    )
+app.service 'fb', <[$rootScope $localStorage $location $http]> ++  ($rootScope, $localStorage,$location,$http)!->
+  @login = (path)->
+    if ($rootScope.fbid)
+      $location.path('/'+path)
+    else
+      FB.login((res) ->
+        if(res.authResponse)
+          FB.api('/me'
+            (response) !->
+              console.log(response)
+              fb_uid = response.id
+              fb_name = response.name
+              fb_email = response.email
 
-    $scope.urldata[0] = $sce.trustAsResourceUrl $scope.urldata[0]
-    $scope.urldata[1] = $sce.trustAsResourceUrl $scope.urldata[1]
-    $scope.urldata[2] = $sce.trustAsResourceUrl $scope.urldata[2]
-    # console.log(idata.data.data)
-    $scope.urldata.push idata.data.data.urlid 
-    page.init()
-    $http.defaults.useXDomain = true
-
-    $scope.cCode = []
-    $scope.search = ->
-      $scope.resultdata = []
-      $scope.clicksearch = true
-      $http(
-        method: 'GET'
-        url: 'http://api.dont-throw.com/data/search?number='+$scope.carnumber
-      ).success((d)!->
-        $scope.resaultnum = d.data.length 
-        $scope.result = d.data
-        if( d.data.length !=0)
-          $scope.noresult = false
-          _url = '//www.youtube.com/embed/'+d.data[0].urlid
-          $scope.resultdata[0] = $sce.trustAsResourceUrl _url
-        else
-          $scope.noresult =true
+              $rootScope.$apply( !->
+                $localStorage.name = response.name
+                $rootScope.name = response.name
+                $rootScope.login = true
+                $rootScope.first_name = response.first_name
+                $rootScope.last_name = response.last_name
+              )
+              const data = {
+                fb_name:response.name
+                thirdId:fb_uid
+                email:fb_email
+                thirdparty_type:'fb'
+              }
+              $http.post('http://api.dont-throw.com/member/add',data).success(->
+                $location.path('/'+path)
+              )
+            scope : 'email,publish_actions'
+          )
+        false
       )
-    $scope.goinfo = ->
-      # console.log($scope.result[])
-      $location.path('/detail/'+$scope.result[0].id)
-    $scope.update = ->
-      if ($rootScope.fbid)
-        $location.path('/update')
-      else
-        FB.login((res) ->
-          console.log(res)
-          if(res.authResponse)
-            FB.api('/me'
-              (response) !->
-                console.log(response)
-                fb_uid = response.id
-                fb_name = response.name
-                fb_email = response.email
 
-                $rootScope.$apply( !->
-                  $localStorage.name = response.name
-                  $rootScope.name = response.name
-                  $rootScope.login = true
-                  $rootScope.first_name = response.first_name
-                  $rootScope.last_name = response.last_name
-                )
-                $location.path('/update')
-                const data = {
-                  fb_name:response.name
-                  thirdId:fb_uid
-                  email:fb_email
-                  thirdparty_type:'fb'
-                }
-                $http.post('http://api.dont-throw.com/member/add',data)
-              scope : 'email,publish_actions'
-            )
-          false
-        )
-app.controller 'detailCtrl', <[$scope $location $http infodata $sce $localStorage $rootScope $stateParams]> ++ ($scope, $location, $http, infodata, $sce, $localStorage, $rootScope, $stateParams) !->
+app.controller 'indexCtrl', <[$scope $location $rootScope $localStorage $http idata $sce fb]> ++ ($scope, $location, $rootScope, $localStorage, $http, idata, $sce, fb) !->
+  page.init()
+  $http.defaults.useXDomain = true
+
+  $scope.idata = idata.data.data
+  $scope.urldata = []
+  $rootScope.snumber = []
+  $rootScope.number = []
+  angular.forEach(idata.data.data,(v,i,o)->
+    $rootScope.number.push v.number
+    _tmp = v.number.split ''
+    _tmp[2] = '_'
+    _tmp[3] = '_'
+    _s = _tmp.join().replace /\,/g,''
+    $rootScope.snumber.push _s
+    $scope.urldata.push '//www.youtube.com/embed/'+v.urlid
+    v.imgpool = JSON.parse(v.imgpool)
+  )
+
+  $scope.urldata[0] = $sce.trustAsResourceUrl $scope.urldata[0]
+  $scope.urldata[1] = $sce.trustAsResourceUrl $scope.urldata[1]
+  $scope.urldata[2] = $sce.trustAsResourceUrl $scope.urldata[2]
+  # console.log(idata.data.data)
+  $scope.urldata.push idata.data.data.urlid 
+
+  $scope.cCode = []
+  $scope.search = ->
+    $scope.resultdata = []
+    $scope.clicksearch = true
+    $http(
+      method: 'GET'
+      url: 'http://api.dont-throw.com/data/search?number='+$scope.carnumber
+    ).success((d)!->
+      $scope.resaultnum = d.data.length 
+      $scope.result = d.data
+      if( d.data.length !=0)
+        $scope.noresult = false
+        _url = '//www.youtube.com/embed/'+d.data[0].urlid
+        $scope.resultdata[0] = $sce.trustAsResourceUrl _url
+      else
+        $scope.noresult =true
+    )
+  $scope.goinfo = ->
+    # console.log($scope.result[])
+    $location.path('/detail/'+$scope.result[0].id)
+  $scope.update = ->
+    fb.login('update')
+    
+app.controller 'detailCtrl', <[$scope $location $http infodata $sce $localStorage $rootScope $stateParams fb]> ++ ($scope, $location, $http, infodata, $sce, $localStorage, $rootScope, $stateParams, fb) !->
     page.init()
     infodata.data = infodata.data.data
     $scope.dlist = []
@@ -135,6 +138,8 @@ app.controller 'detailCtrl', <[$scope $location $http infodata $sce $localStorag
     $scope.boat= []
     $scope.delyear = []
     $scope.small3 = []
+    $scope.update = ->
+      fb.login('update')
     $scope.dislikeit = ->
       if ($rootScope.fbid)
         const votedata ={
