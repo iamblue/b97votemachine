@@ -1,48 +1,16 @@
-<section class="section section--search">
-  <a ng-click="update()" class="section--search__report-btn">我要檢舉</a>
-  
-  <div class="section--search__background"></div>
-  <div class="section--search__container" ng-class="clicksearch ? 'moveleft':''">
-    <h1 class="section--search__title">BadDriver</h1>
-    <h2 class="section--search__subtitle">還一個乾淨的路權給民眾</h2>
-    <form class="section--search__form" >
-      <input type="text" name="search" class="section--search__form__input" placeholder="請輸入欲查詢車牌號碼..." ng-model="carnumber"/>
-      <input type="submit" name="submit" value="查詢" id="submit" class="section--search__form__submit-btn" ng-click="search()"/>
-    </form>
-  </div>
-  <div class="section--search__container" ng-class="clicksearch ? 'resaultmove':''" ng-show="clicksearch">
-    <div class="noresult" ng-show="noresult">
-    </div>
-    <a class="section--search__report-btn" ng-hide="noresult" ng-click="goinfo()">點我看詳情</a>
-    <!-- <a style="color:#fff">1</a> -->
-    <iframe width="90%" height="200" ng-hide="noresult" src="{{resultdata[0]}}" frameborder="0" style="margin-left:5%"allowfullscreen></iframe>
-    <!-- <a style="color:#fff">1</a> -->
-    <h1 class="section--search__title">{{carnumber}}</h1>
-    <h2 class="section--search__subtitle">找到{{resaultnum}}筆資料</h2>
-  </div>
-</section>
-<section class="section section--video-list">
-  <div class="section--video-list__content">
-    <ul class="section--video-list__list">
-      <li class="section--video-list__item " ng-class="{'section--video-list__item': true, 'section--video-list__item--left': $index === 0, 'section--video-list__item--middle': $index === 1, 'section--video-list__item--right': $index === 2}" ng-repeat="d in idata">
-        <div class="section--video-list__item__info">
-          <iframe width="100%" height="200" src="{{urldata[$index]}}" frameborder="0" allowfullscreen ng-show="'{{d.from}}' != 'image'"></iframe>
-          <img ng-show="'{{d.from}}' == 'image'" src="https://s3-us-west-2.amazonaws.com/baddriver/{{d.imgpool[0].u}}" class="section--pic-list"/>
-          車牌{{snumber[$index]}}<br/>
-          {{d.city}},{{d.location}}
-          <a class="section--search__info__btn" ng-href="/#/detail/{{d.id}}">點我看詳情</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</section>
-<section class="section section--description">
-  <div class="section--description__background"></div>
-  <div class="section--description__message">
-    <p>return the public right-of-way to the public</p>
-  </div>
-</section>
-
-<div class="page-footer">
-  <p>BadDriver (c) 2013 , baddrivertw@gmail.com</p>
+<br/>
+<br/><br/>
+<br/><br/><br/>
+<div class="inputdiv">
+<input type="text" ng-model="phone" value="{{phone}}" placeholder="請輸入電話號碼"/>
+<!-- <a class="win" ng-click="win()">查看贏家</a> -->
 </div>
+<ul>
+  <li class="card" ng-repeat=" i in n" >
+    <p>第{{$index}}組,目前票數:{{i.num}}</p>
+    <br/>
+    <p ng-hide="i.content.length == 1">{{i.content}}</p> 
+    <a class="vote" ng-click="vote($index)">投票</a>
+    <img src="img/{{$index}}.jpg" class="trans"/>
+  </li>
+</ul>

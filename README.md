@@ -1,28 +1,12 @@
-BadDriver.tw
+B97 Group vote machine 
 ============
 
-This is BadDriver.tw front-end. 
-
-BadDriver api server (Use YoumebJS framework& Mysql):
-[click here](https://github.com/g0v/baddriver)
+B97跨年團表演-> 5min寫一個投票機，以後再來完成驗證和美觀 XD !
 
 ##Usage
 
 1.`npm install`
 2.`npm start`
-
-
-##專案構想
-https://g0v.hackpad.com/BadDriver-sDcFsbD58zo
-
-
-##待爬資料
-
-
-##架構
-__Backend__: nodejs(Youmeb.js)+Mysql
-
-__f2e__: angular.js(Yeoman)
 
 ##Any Question? Fixe Bugs?
 Please open issue or pull request.
